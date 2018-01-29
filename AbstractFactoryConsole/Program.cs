@@ -9,7 +9,7 @@ using static AbstractFactory.Utility;
 
 namespace AbstractFactoryConsole
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {

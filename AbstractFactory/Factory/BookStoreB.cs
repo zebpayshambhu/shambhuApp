@@ -8,7 +8,7 @@ namespace AbstractFactory.Factory
 {
     public class BookStoreB : IBookStore
     {
-        private CustomerLocation _location;
+        private readonly CustomerLocation _location;
 
         public BookStoreB(CustomerLocation location)
         {
@@ -24,6 +24,8 @@ namespace AbstractFactory.Factory
                     break;
                 case CustomerLocation.WestCoast:
                     advertiser = new RedAdvertiser();
+                    break;
+                default:
                     break;
             }
             return advertiser;

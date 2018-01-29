@@ -25,21 +25,6 @@ namespace AbstractFactory.Interface
         public string Particular { get; set; }
     }
 
-    //public class RechargeFactory
-    //{
-    //    public static RechargeAbstract GetInstance(RechargeType rechargeType)
-    //    {
-    //        switch (rechargeType)
-    //        {
-    //            case RechargeType.UtilityRecharge:
-    //                return new UtilityRecharge();
-    //            case RechargeType.WalletRecharge:
-    //                return new WalletRecharge();
-    //        }
-    //        return null;
-    //    }
-    //}
-
     public abstract class RechargeAbstract
     {
         public abstract void InitiateRequest();
@@ -47,8 +32,22 @@ namespace AbstractFactory.Interface
 
     public abstract class RechargeRequestAbstract: RechargeAbstract
     {
-        public void PaymentRequest(long TransactionId, decimal Amount, int ServiceProviderId, string Particular) { }
+        /// <summary>
+        /// Initiate Payment request for making payment
+        /// </summary>
+        /// <param name="TransactionId"></param>
+        /// <param name="Amount"></param>
+        /// <param name="ServiceProviderId"></param>
+        /// <param name="Particular"></param>
+        public void PaymentRequest(long TransactionId, decimal Amount, int ServiceProviderId, string Particular)
+        {
+            throw new NotSupportedException();
+        }
 
+        /// <summary>
+        /// Check if current request is valid request.
+        /// </summary>
+        /// <returns></returns>
         public abstract bool IsValidateRequest();
     }
 
@@ -59,7 +58,7 @@ namespace AbstractFactory.Interface
 
     public class UtilityRecharge : RechargeRequestAbstract
     {
-        private UtilityRechargeModel _model = null;
+        private UtilityRechargeModel _model;
         public UtilityRecharge(UtilityRechargeModel model)
         {
             _model = model;
@@ -80,7 +79,7 @@ namespace AbstractFactory.Interface
 
     public class WalletRecharge : RechargeRequestAbstract
     {
-        private WalletRechargeModel _model = null;
+        private WalletRechargeModel _model;
         public WalletRecharge(WalletRechargeModel model)
         {
             _model = model;

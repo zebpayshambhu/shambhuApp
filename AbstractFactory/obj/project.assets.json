@@ -186,11 +186,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "F:\\Project\\Sample Project\\AbstractFactory\\AbstractFactory\\AbstractFactory.csproj",
+      "projectUniqueName": "F:\\Project\\Sample Project\\GitHubTest\\AbstractFactory\\AbstractFactory\\AbstractFactory.csproj",
       "projectName": "AbstractFactory",
-      "projectPath": "F:\\Project\\Sample Project\\AbstractFactory\\AbstractFactory\\AbstractFactory.csproj",
+      "projectPath": "F:\\Project\\Sample Project\\GitHubTest\\AbstractFactory\\AbstractFactory\\AbstractFactory.csproj",
       "packagesPath": "C:\\Users\\Shambhu.pasi.SHAMBHUP\\.nuget\\packages\\",
-      "outputPath": "F:\\Project\\Sample Project\\AbstractFactory\\AbstractFactory\\obj\\",
+      "outputPath": "F:\\Project\\Sample Project\\GitHubTest\\AbstractFactory\\AbstractFactory\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

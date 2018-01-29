@@ -19,6 +19,8 @@ namespace AbstractFactory.Interface
                     return new EmailNotification();
                 case NotificationType.SMS:
                     return new SMSNotification();
+                default:
+                    break;
             }
             return null;
         }
