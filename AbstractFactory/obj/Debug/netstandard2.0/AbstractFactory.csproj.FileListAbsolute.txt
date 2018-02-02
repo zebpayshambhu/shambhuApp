@@ -7,3 +7,12 @@ F:\Project\Sample Project\AbstractFactory\AbstractFactory\obj\Debug\netstandard2
 F:\Project\Sample Project\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.AssemblyInfo.cs
 F:\Project\Sample Project\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.dll
 F:\Project\Sample Project\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.csprojResolveAssemblyReference.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\bin\Debug\netstandard2.0\AbstractFactory.deps.json
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\bin\Debug\netstandard2.0\AbstractFactory.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\bin\Debug\netstandard2.0\AbstractFactory.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.csproj.CoreCompileInputs.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.AssemblyInfoInputs.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.AssemblyInfo.cs
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactory\obj\Debug\netstandard2.0\AbstractFactory.pdb

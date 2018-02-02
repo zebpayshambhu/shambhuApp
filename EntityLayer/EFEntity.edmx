@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountType" Type="int" Nullable="false" />
+          <Property Name="PublicSecret" Type="nvarchar" MaxLength="100" />
+          <Property Name="PrivateSecret" Type="nvarchar" MaxLength="100" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+          <Property Name="PublicGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PrivateGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="GCMId" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ParseId" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AzureServiceBusId" Type="nvarchar" MaxLength="1000" />
+          <Property Name="NotificationHandle" Type="uniqueidentifier" />
+          <Property Name="PinSetup" Type="int" />
+          <Property Name="ActiveBTCLedgerId" Type="int" />
+          <Property Name="FileAccessHandle" Type="uniqueidentifier" />
+          <Property Name="LastActive" Type="datetime" />
+          <Property Name="ProfilePicChangeDate" Type="datetime" />
+          <Property Name="ProfilePicHandle" Type="uniqueidentifier" />
+          <Property Name="ProfilePicId" Type="int" />
+          <Property Name="NotificationPlatform" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrencyCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="VerificationLevel" Type="int" Nullable="false" />
+          <Property Name="VerificationDocuemntId" Type="int" Nullable="false" />
+          <Property Name="VerificationStatusNote" Type="nvarchar(max)" />
+          <Property Name="VerificationStatus" Type="int" Nullable="false" />
+          <Property Name="DebitEnabled" Type="bit" Nullable="false" />
+          <Property Name="FiatBalance" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="EliteDiscountPercentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="SendingLimits" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="DebitDisableReason" Type="nvarchar(max)" />
+          <Property Name="SubmissionDate" Type="datetime" />
+          <Property Name="StatusChnageDate" Type="datetime" />
+          <Property Name="ReferralCode" Type="varchar" MaxLength="50" />
+          <Property Name="RefereeCode" Type="varchar" MaxLength="50" />
+          <Property Name="RefereeAccountId" Type="int" />
+          <Property Name="RestrictOutgoingTransactoin" Type="bit" Nullable="false" />
+          <Property Name="OutgoingTransactionModifiedOn" Type="datetime" />
+          <Property Name="OutgoinTransactionChangedByUser" Type="bit" />
+          <Property Name="VerificationDocumentFirebaseName" Type="nvarchar" MaxLength="250" />
+          <Property Name="StatusModifyBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="FCMId" Type="nvarchar" MaxLength="2500" />
+          <Property Name="ProfilePicFirebaseName" Type="nvarchar" MaxLength="250" />
+          <Property Name="RefereeCodeDate" Type="datetime" />
+          <Property Name="PreferredBankId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblAccount_Banks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="3000" Nullable="false" />
+          <Property Name="PublicGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PrivateGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DbModelStoreContainer">
+          <EntitySet Name="tblAccount" EntityType="Self.tblAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAccount_Banks" EntityType="Self.tblAccount_Banks" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountType" Type="Int32" Nullable="false" />
+          <Property Name="Processed" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="NotificationHandle" Type="Guid" />
+          <Property Name="PinSetup" Type="Int32" />
+          <Property Name="FileAccessHandle" Type="Guid" />
+          <Property Name="LastActive" Type="DateTime" Precision="3" />
+          <Property Name="ProfilePicChangeDate" Type="DateTime" Precision="3" />
+          <Property Name="ProfilePicHandle" Type="Guid" />
+          <Property Name="ProfilePicId" Type="Int32" />
+          <Property Name="NotificationPlatform" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VerificationLevel" Type="Int32" Nullable="false" />
+          <Property Name="VerificationStatusNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VerificationStatus" Type="Int32" Nullable="false" />
+          <Property Name="DebitEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="FiatBalance" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="EliteDiscountPercentage" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="SendingLimits" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="DebitDisableReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubmissionDate" Type="DateTime" Precision="3" />
+          <Property Name="StatusChnageDate" Type="DateTime" Precision="3" />
+          <Property Name="ReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefereeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusModifyBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePicFirebaseName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RefereeCodeDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblAccount_Banks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAccounts" EntityType="DbModel.tblAccount" />
+          <EntitySet Name="tblAccount_Banks" EntityType="DbModel.tblAccount_Banks" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="DbEntities">
+          <EntitySetMapping Name="tblAccounts">
+            <EntityTypeMapping TypeName="DbModel.tblAccount">
+              <MappingFragment StoreEntitySet="tblAccount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NotificationHandle" ColumnName="NotificationHandle" />
+                <ScalarProperty Name="PinSetup" ColumnName="PinSetup" />
+                <ScalarProperty Name="FileAccessHandle" ColumnName="FileAccessHandle" />
+                <ScalarProperty Name="LastActive" ColumnName="LastActive" />
+                <ScalarProperty Name="ProfilePicChangeDate" ColumnName="ProfilePicChangeDate" />
+                <ScalarProperty Name="ProfilePicHandle" ColumnName="ProfilePicHandle" />
+                <ScalarProperty Name="ProfilePicId" ColumnName="ProfilePicId" />
+                <ScalarProperty Name="NotificationPlatform" ColumnName="NotificationPlatform" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="VerificationLevel" ColumnName="VerificationLevel" />
+                <ScalarProperty Name="VerificationStatusNote" ColumnName="VerificationStatusNote" />
+                <ScalarProperty Name="VerificationStatus" ColumnName="VerificationStatus" />
+                <ScalarProperty Name="DebitEnabled" ColumnName="DebitEnabled" />
+                <ScalarProperty Name="FiatBalance" ColumnName="FiatBalance" />
+                <ScalarProperty Name="EliteDiscountPercentage" ColumnName="EliteDiscountPercentage" />
+                <ScalarProperty Name="SendingLimits" ColumnName="SendingLimits" />
+                <ScalarProperty Name="DebitDisableReason" ColumnName="DebitDisableReason" />
+                <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
+                <ScalarProperty Name="StatusChnageDate" ColumnName="StatusChnageDate" />
+                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+                <ScalarProperty Name="RefereeCode" ColumnName="RefereeCode" />
+                <ScalarProperty Name="StatusModifyBy" ColumnName="StatusModifyBy" />
+                <ScalarProperty Name="ProfilePicFirebaseName" ColumnName="ProfilePicFirebaseName" />
+                <ScalarProperty Name="RefereeCodeDate" ColumnName="RefereeCodeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccount_Banks">
+            <EntityTypeMapping TypeName="DbModel.tblAccount_Banks">
+              <MappingFragment StoreEntitySet="tblAccount_Banks">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

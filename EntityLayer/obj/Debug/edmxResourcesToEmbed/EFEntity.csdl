@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountType" Type="Int32" Nullable="false" />
+    <Property Name="Processed" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="NotificationHandle" Type="Guid" />
+    <Property Name="PinSetup" Type="Int32" />
+    <Property Name="FileAccessHandle" Type="Guid" />
+    <Property Name="LastActive" Type="DateTime" Precision="3" />
+    <Property Name="ProfilePicChangeDate" Type="DateTime" Precision="3" />
+    <Property Name="ProfilePicHandle" Type="Guid" />
+    <Property Name="ProfilePicId" Type="Int32" />
+    <Property Name="NotificationPlatform" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VerificationLevel" Type="Int32" Nullable="false" />
+    <Property Name="VerificationStatusNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VerificationStatus" Type="Int32" Nullable="false" />
+    <Property Name="DebitEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="FiatBalance" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="EliteDiscountPercentage" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SendingLimits" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DebitDisableReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SubmissionDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusChnageDate" Type="DateTime" Precision="3" />
+    <Property Name="ReferralCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RefereeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusModifyBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProfilePicFirebaseName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RefereeCodeDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblAccount_Banks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankName" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAccounts" EntityType="DbModel.tblAccount" />
+    <EntitySet Name="tblAccount_Banks" EntityType="DbModel.tblAccount_Banks" />
+  </EntityContainer>
+</Schema>

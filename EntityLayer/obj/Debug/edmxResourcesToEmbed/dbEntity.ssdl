@@ -1,0 +1,2264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="zebpayTestnetDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ZebPay_Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountType" Type="int" Nullable="false" />
+    <Property Name="PublicSecret" Type="nvarchar" MaxLength="100" />
+    <Property Name="PrivateSecret" Type="nvarchar" MaxLength="100" />
+    <Property Name="Processed" Type="bit" Nullable="false" />
+    <Property Name="PublicGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PrivateGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="GCMId" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ParseId" Type="nvarchar" MaxLength="1000" />
+    <Property Name="AzureServiceBusId" Type="nvarchar" MaxLength="1000" />
+    <Property Name="NotificationHandle" Type="uniqueidentifier" />
+    <Property Name="PinSetup" Type="int" />
+    <Property Name="ActiveBTCLedgerId" Type="int" />
+    <Property Name="FileAccessHandle" Type="uniqueidentifier" />
+    <Property Name="LastActive" Type="datetime" />
+    <Property Name="ProfilePicChangeDate" Type="datetime" />
+    <Property Name="ProfilePicHandle" Type="uniqueidentifier" />
+    <Property Name="ProfilePicId" Type="int" />
+    <Property Name="NotificationPlatform" Type="nvarchar" MaxLength="100" />
+    <Property Name="CurrencyCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VerificationLevel" Type="int" Nullable="false" />
+    <Property Name="VerificationDocuemntId" Type="int" Nullable="false" />
+    <Property Name="VerificationStatusNote" Type="nvarchar(max)" />
+    <Property Name="VerificationStatus" Type="int" Nullable="false" />
+    <Property Name="DebitEnabled" Type="bit" Nullable="false" />
+    <Property Name="FiatBalance" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="EliteDiscountPercentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SendingLimits" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DebitDisableReason" Type="nvarchar(max)" />
+    <Property Name="SubmissionDate" Type="datetime" />
+    <Property Name="StatusChnageDate" Type="datetime" />
+    <Property Name="ReferralCode" Type="varchar" MaxLength="50" />
+    <Property Name="RefereeCode" Type="varchar" MaxLength="50" />
+    <Property Name="RefereeAccountId" Type="int" />
+    <Property Name="RestrictOutgoingTransactoin" Type="bit" Nullable="false" />
+    <Property Name="OutgoingTransactionModifiedOn" Type="datetime" />
+    <Property Name="OutgoinTransactionChangedByUser" Type="bit" />
+    <Property Name="VerificationDocumentFirebaseName" Type="nvarchar" MaxLength="250" />
+    <Property Name="StatusModifyBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="FCMId" Type="nvarchar" MaxLength="2500" />
+    <Property Name="ProfilePicFirebaseName" Type="nvarchar" MaxLength="250" />
+    <Property Name="RefereeCodeDate" Type="datetime" />
+    <Property Name="PreferredBankId" Type="int" />
+  </EntityType>
+  <EntityType Name="ZebPay_Account_Banks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="3000" Nullable="false" />
+    <Property Name="PublicGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PrivateGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <Function Name="AddUserAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="addressline1" Type="nvarchar" Mode="In" />
+    <Parameter Name="addressline2" Type="nvarchar" Mode="In" />
+    <Parameter Name="city" Type="nvarchar" Mode="In" />
+    <Parameter Name="state" Type="int" Mode="In" />
+    <Parameter Name="pincode" Type="int" Mode="In" />
+    <Parameter Name="verificationstatus" Type="int" Mode="In" />
+    <Parameter Name="customerId" Type="int" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="AddUserAddress_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="addressline1" Type="nvarchar" Mode="In" />
+    <Parameter Name="addressline2" Type="nvarchar" Mode="In" />
+    <Parameter Name="city" Type="nvarchar" Mode="In" />
+    <Parameter Name="state" Type="int" Mode="In" />
+    <Parameter Name="pincode" Type="int" Mode="In" />
+    <Parameter Name="verificationstatus" Type="int" Mode="In" />
+    <Parameter Name="customerId" Type="int" Mode="In" />
+    <Parameter Name="frontAadhaarDocumentId" Type="int" Mode="In" />
+    <Parameter Name="rearAadhaarDocumentId" Type="int" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="AuditBuyTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="btctradeId" Type="int" Mode="In" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="AuditTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="btctradeId" Type="int" Mode="In" />
+    <Parameter Name="transactionId" Type="int" Mode="In" />
+    <Parameter Name="bankpaymentId" Type="int" Mode="In" />
+    <Parameter Name="auditType" Type="int" Mode="In" />
+    <Parameter Name="operationType" Type="int" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="btcAmount" Type="bigint" Mode="In" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Backlognotification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="bankPayment_insertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Zebpay_BankPayment_id" Type="bigint" Mode="In" />
+    <Parameter Name="firebaseChild" Type="nvarchar" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="bankPayment_insertUpdatetvp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="bankPayment_Updateboth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Zebpay_BankPayment_id" Type="bigint" Mode="In" />
+    <Parameter Name="Zebpay_BankPaymentFirebaseSync_id" Type="bigint" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="bankPayment_Updatebothtvp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BCHCalculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="BTCTrade_ComplateBidAsk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tradeId" Type="int" Mode="In" />
+    <Parameter Name="tradeguid" Type="nvarchar" Mode="In" />
+    <Parameter Name="orderType" Type="int" Mode="In" />
+    <Parameter Name="virtualcurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_ExchangeCreditToFiat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="virtualcurrencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="satoshiamount" Type="bigint" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="fiatamount" Type="decimal" Mode="In" />
+    <Parameter Name="amounttype" Type="int" Mode="In" />
+    <Parameter Name="toaccountId" Type="int" Mode="In" />
+    <Parameter Name="bankId" Type="int" Mode="InOut" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_ExchangeCreditToVirtual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="virtualcurrencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="satoshiamount" Type="bigint" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="fiatamount" Type="decimal" Mode="In" />
+    <Parameter Name="amounttype" Type="int" Mode="In" />
+    <Parameter Name="toaccountId" Type="int" Mode="In" />
+    <Parameter Name="txId" Type="int" Mode="InOut" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_ExchangePlaceBuyOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="virtualcurrencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="satoshiamount" Type="bigint" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="fiatamount" Type="decimal" Mode="In" />
+    <Parameter Name="amounttype" Type="int" Mode="In" />
+    <Parameter Name="toaccountId" Type="int" Mode="In" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_ExchangePlaceSellOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="virtualcurrencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="satoshiamount" Type="bigint" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="fiatamount" Type="decimal" Mode="In" />
+    <Parameter Name="amounttype" Type="int" Mode="In" />
+    <Parameter Name="fromaccountId" Type="int" Mode="In" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_GetMyOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+    <Parameter Name="CurrencyPairId" Type="int" Mode="In" />
+    <Parameter Name="errorMessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_InsertOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="buyeraccountId" Type="int" Mode="In" />
+    <Parameter Name="buyernumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="buyerCounty" Type="nvarchar" Mode="In" />
+    <Parameter Name="selleracountId" Type="int" Mode="In" />
+    <Parameter Name="sellernumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="sellerCounty" Type="nvarchar" Mode="In" />
+    <Parameter Name="satoshiamount" Type="bigint" Mode="In" />
+    <Parameter Name="processed" Type="bit" Mode="In" />
+    <Parameter Name="isPaid" Type="bit" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="amountType" Type="int" Mode="In" />
+    <Parameter Name="feesAmount" Type="decimal" Mode="In" />
+    <Parameter Name="orderStatus" Type="int" Mode="In" />
+    <Parameter Name="sellerBankName" Type="nvarchar" Mode="In" />
+    <Parameter Name="sellerBankAccountHolderName" Type="nvarchar" Mode="In" />
+    <Parameter Name="sellerBankAccountNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerRoutingNumberText" Type="nvarchar" Mode="In" />
+    <Parameter Name="sellerRoutingNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="prefferedBankAccount" Type="int" Mode="In" />
+    <Parameter Name="detail1Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="detail2Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="detail3Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="detail4Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="invoiceNote" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="modifiedBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="buyType" Type="int" Mode="In" />
+    <Parameter Name="invoiceNumber" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="btctradeId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_PlaceAskOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyPairId" Type="tinyint" Mode="In" />
+    <Parameter Name="satoshiAmount" Type="bigint" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="amountType" Type="int" Mode="In" />
+    <Parameter Name="fromAccountId" Type="int" Mode="In" />
+    <Parameter Name="tradeId" Type="int" Mode="InOut" />
+    <Parameter Name="tranactionId" Type="int" Mode="InOut" />
+    <Parameter Name="errorMessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_PlaceBidOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyPairId" Type="tinyint" Mode="In" />
+    <Parameter Name="satoshiAmount" Type="bigint" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="amountType" Type="int" Mode="In" />
+    <Parameter Name="toaccountId" Type="int" Mode="In" />
+    <Parameter Name="tradeId" Type="int" Mode="InOut" />
+    <Parameter Name="bankPaymentId" Type="int" Mode="InOut" />
+    <Parameter Name="errorMessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BTCTrade_PlaceBuyOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="virtualcurrencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="satoshiamount" Type="bigint" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="fiatamount" Type="decimal" Mode="In" />
+    <Parameter Name="amounttype" Type="int" Mode="In" />
+    <Parameter Name="toaccountId" Type="int" Mode="In" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="BuyAndSellRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="currency" Type="nvarchar" Mode="In" />
+    <Parameter Name="rateType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CalculateFiatAmountForTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="satoshi" Type="bigint" Mode="In" />
+    <Parameter Name="fromNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="btcUsdRateParam" Type="decimal" Mode="In" />
+    <Parameter Name="NativeCurrencyAmountFiat" Type="decimal" Mode="InOut" />
+    <Parameter Name="NativeCurrencyToUSDRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="btcUsdRate" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="CalculateFiatAmountForTransaction_BCH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="satoshi" Type="bigint" Mode="In" />
+    <Parameter Name="fromNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="btcUsdRateParam" Type="decimal" Mode="In" />
+    <Parameter Name="NativeCurrencyAmountFiat" Type="decimal" Mode="InOut" />
+    <Parameter Name="NativeCurrencyToUSDRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="btcUsdRate" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="CalculateGST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="transactionId" Type="int" Mode="In" />
+    <Parameter Name="transactionType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CalculateTradeFees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pmakerId" Type="int" Mode="In" />
+    <Parameter Name="ptakerId" Type="int" Mode="In" />
+    <Parameter Name="prate" Type="decimal" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="virtualAmount" Type="decimal" Mode="In" />
+    <Parameter Name="ptype" Type="int" Mode="In" />
+    <Parameter Name="pmakerType" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="tTakerFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tMakerFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tTakerFiatRateWithFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tMakerFiatRateWithFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tTakerFiatAmountWithoutFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tMakerFiatAmountWithoutFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tTakerFiatAmountWithFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tMakerFiatAmountWithFees" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="tTakerVirtualAmountWithoutFees" Type="decimal" Precision="20" Scale="18" />
+          <Property Name="tMakerVirtualAmountWithoutFees" Type="decimal" Precision="20" Scale="18" />
+          <Property Name="tTakerVirtualAmountWithFees" Type="decimal" Precision="20" Scale="18" />
+          <Property Name="tMakerVirtualAmountWithFees" Type="decimal" Precision="20" Scale="18" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="CalcutareRateForTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyPairSymbol" Type="nvarchar" Mode="In" />
+    <Parameter Name="currencyPairSymbolForNativeCurrencyRate" Type="nvarchar" Mode="In" />
+    <Parameter Name="exchangeRateProviderId" Type="int" Mode="In" />
+    <Parameter Name="exchangeRateProviderIdForNativeCurrencyRate" Type="int" Mode="In" />
+    <Parameter Name="usdtoFromNativeCurrencyRate" Type="int" Mode="In" />
+    <Parameter Name="pAmount" Type="bigint" Mode="In" />
+    <Parameter Name="toUserNativeCurrencyAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="usdRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="usdAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="usdtoUserNativeCurrencyRate" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="CancelRecieveTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="txid" Type="nvarchar" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CheckIFSCCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+    <Parameter Name="IFSCCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CheckSameBankDetailsExist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="bankAccNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="ifscCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CheckTxID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="txid" Type="varchar(max)" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Checkvouchercode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="secretcode" Type="varchar(max)" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ComputeRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fiatCurrencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="zebpayINRProfitPercentage" Type="decimal" Mode="In" />
+    <Parameter Name="zebpayBuyPercentage" Type="decimal" Mode="In" />
+    <Parameter Name="zebpaySellPercentage" Type="decimal" Mode="In" />
+    <Parameter Name="buyLowerLimit" Type="decimal" Mode="In" />
+    <Parameter Name="sellLowerLimit" Type="decimal" Mode="In" />
+    <Parameter Name="buyUpperLimit" Type="decimal" Mode="In" />
+    <Parameter Name="sellUpperLimit" Type="decimal" Mode="In" />
+    <Parameter Name="priceChangeINR" Type="decimal" Mode="In" />
+    <Parameter Name="randomPriceChangeINR" Type="decimal" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NativeCurrency" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="BtcUsdRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UsdtoNativeCurrencyRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BtctoNativeCurrencyRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BuyRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SellRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BtcUsdRateProviderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OriginalUsdtoNativeCurrencyRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OriginalUsdtoNativeRateProvideName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZebpayINRProfitPercentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="ZebpayBuyPercentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="ZebpaySellPercentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="BuyLowerLimit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SellUpperLimit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PriceChangeINR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RandomPriceChangeINR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PublicGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PrivateGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="CreateVirtualAccountForRemainUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CreateWithdrawBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CreateWithdrawBatch_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CreateWithdrawBatch_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CreateWithdrawBatch_V3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CreateWithdrawBatch_V4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CreateWithdrawBatch_V5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CreateWithdrawBatch_V6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CreateWithdrawBatch_V7" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CreateWithdrawBatch_V8" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="CustomerFilterForAdminPanel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MobileNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Pancard" Type="nvarchar" Mode="In" />
+    <Parameter Name="BankAccountNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="BitCoinAddress" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CustomerIsInRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+    <Parameter Name="customerId" Type="int" Mode="In" />
+    <Parameter Name="roleSystemName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeactivateUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="customerid" Type="int" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DeactivateUserAccount_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userMobilenumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DeactivatUserAdharCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="oldNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="newNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeactiveSystemBankAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankAccountId" Type="int" Mode="In" />
+    <Parameter Name="pRoutingCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="currencycode" Type="nvarchar" Mode="In" />
+    <Parameter Name="statusModifyBy" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DebitDisableAccountofPotentialSuccessfulTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tonumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="actualamount" Type="bigint" Mode="In" />
+    <Parameter Name="timestamp" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="DecodeBase64" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
+    <Parameter Name="Text" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="DecodeBase64Varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+    <Parameter Name="encodedText" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="EmailVerification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="emailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="verifcationId" Type="int" Mode="InOut" />
+    <Parameter Name="resend" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="EncodeBase64" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
+    <Parameter Name="Text" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ExecuteExchangeTrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="FullText_Disable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="FullText_Enable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="FullText_IsSupported" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="FUN_VA_GetFeesBasedonPartnerId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAccountStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="iLimit" Type="int" Mode="In" />
+    <Parameter Name="tCount" Type="int" Mode="InOut" />
+    <Parameter Name="balance" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="GetAccountStatementWihtCrdb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="iLimit" Type="int" Mode="In" />
+    <Parameter Name="tCount" Type="int" Mode="InOut" />
+    <Parameter Name="balance" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="GetAccountStatementWihtCrdb_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="iLimit" Type="int" Mode="In" />
+    <Parameter Name="tCount" Type="int" Mode="InOut" />
+    <Parameter Name="balance" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="GetAccountStatementWihtCrdbInINR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="useraccountid" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="41" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NetAmount" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GetAccountStatementWihtCrdbInINR_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="useraccountid" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="41" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NetAmount" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="bankpaymenttype" Type="int" Nullable="false" />
+          <Property Name="BankPaymentProcessStatus" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GetAccountStatementWihtCrdbInINR_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="useraccountid" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="1031" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NetAmount" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="bankpaymenttype" Type="int" Nullable="false" />
+          <Property Name="BankPaymentProcessStatus" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GetAllBalances" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SatoshiBalance" Type="bigint" />
+          <Property Name="FiatBalance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PendingSatoshiBalance" Type="bigint" />
+          <Property Name="PendingFiatBalance" Type="decimal" Precision="18" Scale="4" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GetAndDebitDisableAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Minute" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetBalanceForMultipleCurrencies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="int" Mode="In" />
+    <Parameter Name="CurrencyCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetBalanceWithCurrency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="currency" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetBitbackEligibleCustomersPagingNEW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+    <Parameter Name="thresholdINR" Type="decimal" Mode="In" />
+    <Parameter Name="reward" Type="decimal" Mode="In" />
+    <Parameter Name="PageNumber" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetCurrencyCodeINTValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="currencyCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetCurrencyCodeStringValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="currencyCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetDateWiseTotalTradeForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetDetailForDepositeOKR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetE164FormatByAccountId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetFiatBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetFiatBalanceWithCurrency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="Currency" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetINRBalanceByMegicMomentId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+    <Parameter Name="megicmomentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetKYCDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="TotalNewKYC" Type="int" Nullable="false" />
+          <Property Name="AutoVerifyKYC" Type="int" Nullable="false" />
+          <Property Name="ManuallyVerifyKYC" Type="int" Nullable="false" />
+          <Property Name="ManuallyRejectKYC" Type="int" Nullable="false" />
+          <Property Name="PendingKYC" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GetLastTradeRateMaxBidMinAskVolume" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TradePairID" Type="tinyint" Mode="In" />
+    <Parameter Name="ErrorMessage" Type="nvarchar(max)" Mode="InOut" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="GetListOfTotalCancelDepositeOrderByReason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ReasonType" Type="int" />
+          <Property Name="TotalCancelPerReason" Type="int" />
+          <Property Name="TotalCancelAmountPerReason" Type="decimal" Precision="38" Scale="2" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GetNegativeBalanceAccountIds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="AccountId" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GETNEWID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="uniqueidentifier" />
+  <Function Name="GetNextSequenceValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetOrderBookQuery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TradePairID" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="GetPendingFiatBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPendingSatoshiBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetReferralCommision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetReferralCommisionByUserAccountId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="refereeaccountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSMSGateway" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="verificationId" Type="int" Mode="In" />
+    <Parameter Name="requestType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetStateProvinceIdFromAccountId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetTotalTradeForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetTransactionHistoryForFirebaseSync" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="transactionHistoryId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetTransactionHistoryForFirebaseSyncNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="transactionHistoryId" Type="int" Mode="In" />
+    <Parameter Name="fiatbalance" Type="decimal" Mode="InOut" />
+    <Parameter Name="balance" Type="bigint" Mode="InOut" />
+    <Parameter Name="pendingTradeSatoshiBalance" Type="bigint" Mode="InOut" />
+    <Parameter Name="pendingTradeFiatBalance" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="GetTransactionHistoryForSync" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="iLimit" Type="int" Mode="In" />
+    <Parameter Name="tCount" Type="int" Mode="InOut" />
+    <Parameter Name="balance" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="GetTransactionHistoryForSyncNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="iLimit" Type="int" Mode="In" />
+    <Parameter Name="tCount" Type="int" Mode="InOut" />
+    <Parameter Name="balance" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="GetUserAccountFromTestAndroid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetUserDeviceDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mobileNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="emailAddress" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetUserReferralDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RefereeAccountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetZebpayInternalAccountID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="AccountID" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="ImportBankFeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+    <Parameter Name="errorMessage" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="ImportBankFeed_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+    <Parameter Name="errorMessage" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="ImportBankFeed_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+    <Parameter Name="errorMessage" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="ImportBankFeedCheckForDuplicate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertAuditLogAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="In" />
+    <Parameter Name="errorMessage" Type="nvarchar" Mode="In" />
+    <Parameter Name="priority" Type="int" Mode="In" />
+    <Parameter Name="btctradeId" Type="int" Mode="In" />
+    <Parameter Name="transactionId" Type="int" Mode="In" />
+    <Parameter Name="bankpaymentId" Type="int" Mode="In" />
+    <Parameter Name="auditType" Type="int" Mode="In" />
+    <Parameter Name="operationType" Type="int" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="btcAmount" Type="bigint" Mode="In" />
+    <Parameter Name="userINRBalance" Type="bigint" Mode="In" />
+    <Parameter Name="userBTCBalance" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="InsertDetailIn_PancardDetailByNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertIntoBankpayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userAccountId" Type="int" Mode="In" />
+    <Parameter Name="bankpaymentType" Type="int" Mode="In" />
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="bankpaymentProcessStatus" Type="int" Mode="In" />
+    <Parameter Name="tradeId" Type="int" Mode="In" />
+    <Parameter Name="invoicenumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="bankpaymentId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="InsertNSDLResponceToNSDLTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertSendTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromaccountId" Type="int" Mode="In" />
+    <Parameter Name="toAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="amount" Type="bigint" Mode="In" />
+    <Parameter Name="note" Type="nvarchar" Mode="In" />
+    <Parameter Name="fees" Type="bigint" Mode="In" />
+    <Parameter Name="vCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+    <Parameter Name="internalSendBitcoinTransaction" Type="bit" Mode="InOut" />
+    <Parameter Name="transactionId" Type="int" Mode="InOut" />
+    <Parameter Name="receivertransactionId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="InsertSendTransaction_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyCode" Type="int" Mode="In" />
+    <Parameter Name="fromaccountId" Type="int" Mode="In" />
+    <Parameter Name="toAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="amount" Type="bigint" Mode="In" />
+    <Parameter Name="note" Type="nvarchar" Mode="In" />
+    <Parameter Name="fees" Type="bigint" Mode="In" />
+    <Parameter Name="vCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+    <Parameter Name="internalSendBitcoinTransaction" Type="bit" Mode="InOut" />
+    <Parameter Name="transactionId" Type="int" Mode="InOut" />
+    <Parameter Name="receivertransactionId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="InsertTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromnumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="fromName" Type="nvarchar" Mode="In" />
+    <Parameter Name="fromGUID" Type="nvarchar" Mode="In" />
+    <Parameter Name="fromAccountId" Type="int" Mode="In" />
+    <Parameter Name="toNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="toName" Type="nvarchar" Mode="In" />
+    <Parameter Name="toGUID" Type="nvarchar" Mode="In" />
+    <Parameter Name="toAccountId" Type="int" Mode="In" />
+    <Parameter Name="btcAmount" Type="bigint" Mode="In" />
+    <Parameter Name="btcFee" Type="bigint" Mode="In" />
+    <Parameter Name="virtualCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="fromNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="toNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="note" Type="nvarchar" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="encodeNote" Type="bit" Mode="In" />
+    <Parameter Name="paymentType" Type="int" Mode="In" />
+    <Parameter Name="txId" Type="nvarchar" Mode="In" />
+    <Parameter Name="magicMomentid" Type="int" Mode="In" />
+    <Parameter Name="magicMomentMessageId" Type="int" Mode="In" />
+    <Parameter Name="nativeCurrencyAmount" Type="decimal" Mode="In" />
+    <Parameter Name="adminNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="transactionguid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="transactiontableId" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="InsertTransaction_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromnumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="fromName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="fromGUID" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="fromAccountId" Type="int" Mode="In" />
+    <Parameter Name="toNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="toName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="toGUID" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="toAccountId" Type="int" Mode="In" />
+    <Parameter Name="btcAmount" Type="bigint" Mode="In" />
+    <Parameter Name="btcFee" Type="bigint" Mode="In" />
+    <Parameter Name="virtualCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="fromNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="toNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="note" Type="nvarchar" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="encodeNote" Type="bit" Mode="In" />
+    <Parameter Name="paymentType" Type="int" Mode="In" />
+    <Parameter Name="txId" Type="nvarchar" Mode="In" />
+    <Parameter Name="magicMomentid" Type="int" Mode="In" />
+    <Parameter Name="magicMomentMessageId" Type="int" Mode="In" />
+    <Parameter Name="nativeCurrencyAmount" Type="decimal" Mode="In" />
+    <Parameter Name="adminNote" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="transactionguid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="transactiontableId" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="InsertTransactionDetailFromZebpayAccountToExpenseAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Amount" Type="bigint" Mode="In" />
+    <Parameter Name="paymentType" Type="int" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar" Mode="In" />
+    <Parameter Name="walletId" Type="int" Mode="In" />
+    <Parameter Name="dbId" Type="int" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="InsertUpdateVirtualAccountQueueRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertUpdateVirtualAccountRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="IsUserTransactionStatusBlocked" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="blocktype" Type="int" Mode="In" />
+  </Function>
+  <Function Name="LanguagePackImport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LanguageId" Type="int" Mode="In" />
+    <Parameter Name="XmlPackage" Type="xml" Mode="In" />
+  </Function>
+  <Function Name="ListOfBankDetailToVerifyBankWhosePancardVerified" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListOfEligibleCandidateToVerifyKyc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListOfNameWithCommonPanCardNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListOfPancardDetailToVerifyPancardOnly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="MatchingEngine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TradeAmount_Current" Type="decimal" Mode="In" />
+    <Parameter Name="TradeId_Current" Type="int" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="totalamountmatched" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="nop_getnotnullnotempty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
+    <Parameter Name="p1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="p2" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="nop_getprimarykey_indexname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="table_name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="nop_splitstring_to_table" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="string" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="delimiter" Type="char" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="data" Type="nvarchar(max)" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="PlaceBTCTradeOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="feesAmount" Type="decimal" Mode="In" />
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="totalAmount" Type="decimal" Mode="In" />
+    <Parameter Name="buyerAccountId" Type="int" Mode="In" />
+    <Parameter Name="buyerNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="satoshiamount" Type="bigint" Mode="In" />
+    <Parameter Name="sellerAccountId" Type="int" Mode="In" />
+    <Parameter Name="sellerNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="amounttype" Type="int" Mode="In" />
+    <Parameter Name="buyType" Type="int" Mode="In" />
+    <Parameter Name="orderStatus" Type="int" Mode="In" />
+    <Parameter Name="ispaid" Type="int" Mode="In" />
+    <Parameter Name="PrefferedBankAccountId" Type="int" Mode="In" />
+    <Parameter Name="Detail1Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerBankName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail2Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerBankAccountHolderName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail3Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerBankAccountNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerRoutingNumberText" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail4Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerRoutingNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNotes" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Invoice_AmountINR" Type="decimal" Mode="In" />
+    <Parameter Name="Invoice_FeesINR" Type="decimal" Mode="In" />
+    <Parameter Name="Invoice_TaxINR" Type="decimal" Mode="In" />
+    <Parameter Name="Invoice_TotalAmountINR" Type="decimal" Mode="In" />
+    <Parameter Name="Invoice_Qty" Type="bigint" Mode="In" />
+    <Parameter Name="Invoice_Rate" Type="decimal" Mode="In" />
+    <Parameter Name="InvoiceId" Type="int" Mode="In" />
+    <Parameter Name="InvoiceNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="loggedinUser" Type="nvarchar" Mode="In" />
+    <Parameter Name="buyercountry" Type="nvarchar" Mode="In" />
+    <Parameter Name="sellercountry" Type="nvarchar" Mode="In" />
+    <Parameter Name="btctradeId" Type="int" Mode="InOut" />
+    <Parameter Name="transactionId" Type="int" Mode="InOut" />
+    <Parameter Name="bankpaymentId" Type="int" Mode="InOut" />
+    <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="PlaceBTCTradeOrder_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currencyPairINT" Type="int" Mode="In" />
+    <Parameter Name="currencyCodeINT" Type="int" Mode="In" />
+    <Parameter Name="operationTypeINT" Type="int" Mode="In" />
+    <Parameter Name="isFromAdminPanel" Type="bit" Mode="In" />
+    <Parameter Name="feesAmount" Type="decimal" Mode="In" />
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="totalAmount" Type="decimal" Mode="In" />
+    <Parameter Name="buyerAccountId" Type="int" Mode="In" />
+    <Parameter Name="buyerNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="satoshiamount" Type="bigint" Mode="In" />
+    <Parameter Name="sellerAccountId" Type="int" Mode="In" />
+    <Parameter Name="sellerNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="rate" Type="decimal" Mode="In" />
+    <Parameter Name="amounttype" Type="int" Mode="In" />
+    <Parameter Name="buyType" Type="int" Mode="In" />
+    <Parameter Name="orderStatus" Type="int" Mode="In" />
+    <Parameter Name="ispaid" Type="int" Mode="In" />
+    <Parameter Name="PrefferedBankAccountId" Type="int" Mode="In" />
+    <Parameter Name="Detail1Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerBankName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail2Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerBankAccountHolderName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail3Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerBankAccountNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerRoutingNumberText" Type="nvarchar" Mode="In" />
+    <Parameter Name="Detail4Label" Type="nvarchar" Mode="In" />
+    <Parameter Name="SellerRoutingNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNotes" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Invoice_AmountINR" Type="decimal" Mode="In" />
+    <Parameter Name="Invoice_FeesINR" Type="decimal" Mode="In" />
+    <Parameter Name="Invoice_TaxINR" Type="decimal" Mode="In" />
+    <Parameter Name="Invoice_TotalAmountINR" Type="decimal" Mode="In" />
+    <Parameter Name="Invoice_Qty" Type="bigint" Mode="In" />
+    <Parameter Name="Invoice_Rate" Type="decimal" Mode="In" />
+    <Parameter Name="InvoiceId" Type="int" Mode="In" />
+    <Parameter Name="InvoiceNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="loggedinUser" Type="nvarchar" Mode="In" />
+    <Parameter Name="buyercountry" Type="nvarchar" Mode="In" />
+    <Parameter Name="sellercountry" Type="nvarchar" Mode="In" />
+    <Parameter Name="btctradeId" Type="int" Mode="InOut" />
+    <Parameter Name="transactionId" Type="int" Mode="InOut" />
+    <Parameter Name="bankpaymentId" Type="int" Mode="InOut" />
+    <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="PlaceTradeOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="makerOrderId" Type="int" Mode="In" />
+    <Parameter Name="takerOrderId" Type="int" Mode="In" />
+    <Parameter Name="makerId" Type="int" Mode="In" />
+    <Parameter Name="takerId" Type="int" Mode="In" />
+    <Parameter Name="matchedAmount" Type="bigint" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="errorMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="PreferedBankAccountIdForChillrDeposit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="ProductLoadAllPaged" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryIds" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ManufacturerId" Type="int" Mode="In" />
+    <Parameter Name="StoreId" Type="int" Mode="In" />
+    <Parameter Name="VendorId" Type="int" Mode="In" />
+    <Parameter Name="WarehouseId" Type="int" Mode="In" />
+    <Parameter Name="ParentGroupedProductId" Type="int" Mode="In" />
+    <Parameter Name="ProductTypeId" Type="int" Mode="In" />
+    <Parameter Name="VisibleIndividuallyOnly" Type="bit" Mode="In" />
+    <Parameter Name="ProductTagId" Type="int" Mode="In" />
+    <Parameter Name="FeaturedProducts" Type="bit" Mode="In" />
+    <Parameter Name="PriceMin" Type="decimal" Mode="In" />
+    <Parameter Name="PriceMax" Type="decimal" Mode="In" />
+    <Parameter Name="Keywords" Type="nvarchar" Mode="In" />
+    <Parameter Name="SearchDescriptions" Type="bit" Mode="In" />
+    <Parameter Name="SearchSku" Type="bit" Mode="In" />
+    <Parameter Name="SearchProductTags" Type="bit" Mode="In" />
+    <Parameter Name="UseFullTextSearch" Type="bit" Mode="In" />
+    <Parameter Name="FullTextMode" Type="int" Mode="In" />
+    <Parameter Name="FilteredSpecs" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LanguageId" Type="int" Mode="In" />
+    <Parameter Name="OrderBy" Type="int" Mode="In" />
+    <Parameter Name="AllowedCustomerRoleIds" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="ShowHidden" Type="bit" Mode="In" />
+    <Parameter Name="LoadFilterableSpecificationAttributeOptionIds" Type="bit" Mode="In" />
+    <Parameter Name="FilterableSpecificationAttributeOptionIds" Type="nvarchar(max)" Mode="InOut" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ProductTagCountLoadAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StoreId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ReceiveBitcoinQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="txid" Type="nvarchar" Mode="In" />
+    <Parameter Name="amount" Type="bigint" Mode="In" />
+    <Parameter Name="confirmation" Type="int" Mode="In" />
+    <Parameter Name="address" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ReceiveBlockchainTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="confirmation" Type="int" Mode="In" />
+    <Parameter Name="reciverAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="recivertxid" Type="nvarchar" Mode="In" />
+    <Parameter Name="amount" Type="bigint" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="virtualCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="debitenable" Type="bit" Mode="In" />
+    <Parameter Name="debitdesablereason" Type="nvarchar" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ReceiveBlockchainTransaction_copy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="confirmation" Type="int" Mode="In" />
+    <Parameter Name="reciverAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="recivertxid" Type="nvarchar" Mode="In" />
+    <Parameter Name="amount" Type="bigint" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="virtualCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="debitenable" Type="bit" Mode="In" />
+    <Parameter Name="debitdesablereason" Type="nvarchar" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ReceiveBlockchainTransaction_v1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="confirmation" Type="int" Mode="In" />
+    <Parameter Name="reciverAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="recivertxid" Type="nvarchar" Mode="In" />
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="virtualCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="debitenable" Type="bit" Mode="In" />
+    <Parameter Name="debitdesablereason" Type="nvarchar" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ReverseTransactionNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
+    <Parameter Name="encodedNote" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sendTransactionSetStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BatchId" Type="varchar" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="Txid" Type="varchar" Mode="In" />
+    <Parameter Name="Fees" Type="bigint" Mode="In" />
+    <Parameter Name="Processed" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SlabwiseFees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="FromRange" Type="bigint" Mode="In" />
+    <Parameter Name="ToRange" Type="bigint" Mode="In" />
+    <Parameter Name="Fees" Type="bigint" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+    <Parameter Name="Currency" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_AccountMove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="oldNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="newNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="remark" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="admincustomerId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_Add_ContactLists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_Add_ContactLists_lite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_Add_ContactLists_lite_For_OneRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_Add_Invites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_Add_Or_Update_ContactLists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="e164format" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="countrycode" Type="nvarchar" Mode="In" />
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Add_Reverse_Transaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="transactionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_BitbackInsertNEW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+    <Parameter Name="thresholdINR" Type="decimal" Mode="In" />
+    <Parameter Name="reward" Type="decimal" Mode="In" />
+    <Parameter Name="creatorEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="month" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="bitbackName" Type="nvarchar" Mode="In" />
+    <Parameter Name="maxAllowedBitbackINR" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="Sp_GetAccountFromAPIKey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="apiKey" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_GetAPIKey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="apiKey" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_GetVolumeLast24Hours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_GetZebpayIndiaStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="zebpaIndiaAccountId" Type="int" Mode="In" />
+    <Parameter Name="airtimeAccountId" Type="int" Mode="In" />
+    <Parameter Name="voucherAccountId" Type="int" Mode="In" />
+    <Parameter Name="promocodeAccountId" Type="int" Mode="In" />
+    <Parameter Name="welcomAccountId" Type="int" Mode="In" />
+    <Parameter Name="liquidity" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="SP_ScanBitGoAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_Select_ContactList_AccountId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_Update_Transaction_As_Read" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tocontactGuid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="spDeleteAccountAndAllRelatedDataOnTestnet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MobileNumber" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="spInsertTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="transaction_FromNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_FromName" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_FromGUID" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_FromAccountId" Type="int" Mode="In" />
+    <Parameter Name="transaction_ToNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_ToName" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_ToGUID" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_ToAccountId" Type="int" Mode="In" />
+    <Parameter Name="transaction_BtcAmount" Type="bigint" Mode="In" />
+    <Parameter Name="transaction_BtcFee" Type="bigint" Mode="In" />
+    <Parameter Name="transaction_FromNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_ToNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_Note" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_Type" Type="int" Mode="In" />
+    <Parameter Name="transaction_Status" Type="int" Mode="In" />
+    <Parameter Name="transaction_EncodeNote" Type="bit" Mode="In" />
+    <Parameter Name="transaction_PaymentType" Type="int" Mode="In" />
+    <Parameter Name="transaction_Txid" Type="nvarchar" Mode="In" />
+    <Parameter Name="transaction_MagicMomentid" Type="int" Mode="In" />
+    <Parameter Name="transaction_MagicMomentMessageId" Type="int" Mode="In" />
+    <Parameter Name="transaction_NativeCurrencyAmount" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="Test_AddContacts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="allContacts" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="contactId" Type="int" Mode="In" />
+    <Parameter Name="delimiter" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Transaction_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="toNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="fromAccount" Type="int" Mode="In" />
+    <Parameter Name="toAccount" Type="int" Mode="In" />
+    <Parameter Name="amount" Type="bigint" Mode="In" />
+    <Parameter Name="fees" Type="bigint" Mode="In" />
+    <Parameter Name="magicMomentid" Type="int" Mode="In" />
+    <Parameter Name="virtualCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="paymentType" Type="int" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar" Mode="In" />
+    <Parameter Name="txid" Type="nvarchar" Mode="In" />
+    <Parameter Name="tranactionId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="TransactionSetAmount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="toNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="btcAmount" Type="bigint" Mode="In" />
+    <Parameter Name="fees" Type="bigint" Mode="In" />
+    <Parameter Name="paymenttype" Type="int" Mode="In" />
+    <Parameter Name="nativeCurrencyAmount" Type="decimal" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="USDtoFromUserNativeCurrencyRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="FromUserNativeCurrencyAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="touserNativeCurrencyAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDtoToUserNativeCurrencyRate" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="TransactionSetAmount_BCH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="toNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="btcAmount" Type="bigint" Mode="In" />
+    <Parameter Name="fees" Type="bigint" Mode="In" />
+    <Parameter Name="paymenttype" Type="int" Mode="In" />
+    <Parameter Name="nativeCurrencyAmount" Type="decimal" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="USDtoFromUserNativeCurrencyRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="FromUserNativeCurrencyAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="touserNativeCurrencyAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDtoToUserNativeCurrencyRate" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="TransactionSetAmount_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="toNativeCurrency" Type="nvarchar" Mode="In" />
+    <Parameter Name="btcAmount" Type="bigint" Mode="In" />
+    <Parameter Name="fees" Type="bigint" Mode="In" />
+    <Parameter Name="paymenttype" Type="int" Mode="In" />
+    <Parameter Name="nativeCurrencyAmount" Type="decimal" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="USDtoFromUserNativeCurrencyRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="FromUserNativeCurrencyAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="touserNativeCurrencyAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDRate" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDAmount" Type="decimal" Mode="InOut" />
+    <Parameter Name="USDtoToUserNativeCurrencyRate" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="UDF_SplitString" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Input" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Character" Type="char" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Item" Type="nvarchar" MaxLength="1000" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="udfFiatAmountGetValues" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="satoshi" Type="bigint" Mode="In" />
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SatoshiAmount" Type="bigint" />
+          <Property Name="BTCAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NativeCurrencyCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="BTCUsdRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="USDAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NativeCurrencyToUSDRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NativeCurrencyAmount" Type="decimal" Precision="18" Scale="2" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="UnVerifiedCustomerEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="E164Format" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmaIladdress" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailUnVerifiedOut" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="UpdateBTCTradeWithSendPushNotificationTrue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateTaxPercentageInZebpaySettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="taxPercentage" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="UpdateVerificationProfile_PancardStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateVirtualAccountQueueRemainingFields" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateVirtualAccountRemainingFields" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_AccountStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_Admin_ResetFailedPasswordAttmpts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="emailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="number" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ApproveRefund" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RefundId" Type="int" Mode="In" />
+    <Parameter Name="CheckerId" Type="int" Mode="In" />
+    <Parameter Name="CheckerNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="RefundDepositId" Type="int" Mode="InOut" />
+    <Parameter Name="RefundWithdrawalId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ApproveReorderRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ReorderId" Type="int" Mode="In" />
+    <Parameter Name="CurrentCustomerId" Type="int" Mode="In" />
+    <Parameter Name="OldDepositId" Type="int" Mode="In" />
+    <Parameter Name="AllowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="AllowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="CheckerNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="bankPaymentId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ApproveReorderRequest_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ReorderId" Type="int" Mode="In" />
+    <Parameter Name="CurrentCustomerId" Type="int" Mode="In" />
+    <Parameter Name="OldDepositId" Type="int" Mode="In" />
+    <Parameter Name="AllowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="AllowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="CheckerNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="bankPaymentId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ApproveReorderRequest_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ReorderId" Type="int" Mode="In" />
+    <Parameter Name="CurrentCustomerId" Type="int" Mode="In" />
+    <Parameter Name="OldDepositId" Type="int" Mode="In" />
+    <Parameter Name="AllowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="AllowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="CheckerNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="bankPaymentId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_AssignBitcoinAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="count" Type="int" Mode="In" />
+    <Parameter Name="CurrencyCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_AssignBitcoinAddress_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="count" Type="int" Mode="In" />
+    <Parameter Name="CurrencyCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_bankpayment_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="time" Type="datetime" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_BulkInsertTest_AddressWallet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_CheckAnyPendingTransactionBasedOnAccountID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+    <Parameter Name="returnVal" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CheckAnyPendingTransactionBasedOnAccountID_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+    <Parameter Name="returnVal" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CheckPartnerLimitForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_COMMON_GetAccountDetailsWithPartnerLimits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_COMMON_GetAccountDetailsWithPartnerLimits_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_COMMON_GetNetBankingRequestStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="requestid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_CreateAutoWithdrawBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateCashfreeRefundBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateDepositOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserAccountId" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="PreferredBankAccountId" Type="int" Mode="In" />
+    <Parameter Name="PreferredBankAccountGUID" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="bankPaymentId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateDepositOrder_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserAccountId" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="PreferredBankAccountId" Type="int" Mode="In" />
+    <Parameter Name="PreferredBankAccountGUID" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="bankPaymentId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateDepositOrder_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserAccountId" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="PreferredBankAccountId" Type="int" Mode="In" />
+    <Parameter Name="PreferredBankAccountGUID" Type="nvarchar" Mode="In" />
+    <Parameter Name="isAdmin" Type="bit" Mode="In" />
+    <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="bankPaymentId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateFinancialYearEndWithdrawBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="MinBalance" Type="decimal" Mode="In" />
+    <Parameter Name="MaxBalance" Type="decimal" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateRefundRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankfeedId" Type="int" Mode="In" />
+    <Parameter Name="userAccountId" Type="int" Mode="In" />
+    <Parameter Name="refundType" Type="int" Mode="In" />
+    <Parameter Name="refundMakerNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="evidenceIdList" Type="nvarchar" Mode="In" />
+    <Parameter Name="bankName" Type="varchar" Mode="In" />
+    <Parameter Name="bankAccNum" Type="nvarchar" Mode="In" />
+    <Parameter Name="bankAccName" Type="nvarchar" Mode="In" />
+    <Parameter Name="bankIfscCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="makerCustomerId" Type="int" Mode="In" />
+    <Parameter Name="zendeskTicketNumber" Type="int" Mode="In" />
+    <Parameter Name="refundId" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateReorderRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="oldDepositId" Type="int" Mode="In" />
+    <Parameter Name="bankfeedId" Type="int" Mode="In" />
+    <Parameter Name="zendeskTicketNum" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="cancelReason" Type="int" Mode="In" />
+    <Parameter Name="cancelOrderNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="makerCustomerId" Type="int" Mode="In" />
+    <Parameter Name="makerNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="reorderId" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateReorderRequest_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="oldDepositId" Type="int" Mode="In" />
+    <Parameter Name="bankfeedId" Type="int" Mode="In" />
+    <Parameter Name="zendeskTicketNum" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="cancelReason" Type="int" Mode="In" />
+    <Parameter Name="cancelOrderNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="makerCustomerId" Type="int" Mode="In" />
+    <Parameter Name="makerNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="reorderId" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_CreateReorderRequest_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="oldDepositId" Type="int" Mode="In" />
+    <Parameter Name="bankfeedId" Type="int" Mode="In" />
+    <Parameter Name="zendeskTicketNum" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="cancelReason" Type="int" Mode="In" />
+    <Parameter Name="cancelOrderNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="makerCustomerId" Type="int" Mode="In" />
+    <Parameter Name="makerNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="reorderId" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_DepositConfirm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositGuid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="partnerRefNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="paymentStatus" Type="int" Mode="In" />
+    <Parameter Name="paymenttype" Type="int" Mode="In" />
+    <Parameter Name="returnVal" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_DepositMarkPaid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BankPaymentID" Type="int" Mode="In" />
+    <Parameter Name="BankFeedId" Type="int" Mode="In" />
+    <Parameter Name="ProcessedByCustomerId" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_DepositMarkPaid_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BankPaymentID" Type="int" Mode="In" />
+    <Parameter Name="BankFeedId" Type="int" Mode="In" />
+    <Parameter Name="ProcessedByCustomerId" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_DepositMarkPaid_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BankPaymentID" Type="int" Mode="In" />
+    <Parameter Name="BankFeedId" Type="int" Mode="In" />
+    <Parameter Name="ProcessedByCustomerId" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromDeposit" Type="int" Mode="In" />
+    <Parameter Name="allowXDaysFromRegistration" Type="int" Mode="In" />
+    <Parameter Name="Error" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_DisableSendToAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_EnableSendToAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ExpireCurrentSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="verificationGuid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_FP_CreateAutoWithdrawBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+    <Parameter Name="BatchName" Type="varchar" Mode="In" />
+    <Parameter Name="BatchDate" Type="datetime" Mode="In" />
+    <Parameter Name="BatchProcessor" Type="int" Mode="In" />
+    <Parameter Name="errMessage" Type="varchar" Mode="InOut" />
+    <Parameter Name="batchId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_FP_GetWithdrawBatchByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="day" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_FP_GetWithdrawBatchByProcessor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="processor" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_FP_UpdateWithdrawBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="IsUpdateStatusWebJobProcessed" Type="bit" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_FP_UpdateWithdrawBatchTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="webjobProcessed" Type="bit" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_FreezeBankfeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankfeedId" Type="int" Mode="In" />
+    <Parameter Name="adminCustomerId" Type="int" Mode="In" />
+    <Parameter Name="freezeType" Type="int" Mode="In" />
+    <Parameter Name="remarks" Type="varchar" Mode="In" />
+    <Parameter Name="success" Type="bit" Mode="InOut" />
+    <Parameter Name="ErrorMsg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetAllCoins" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetAllUnprocessedAndFailedSMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_GetAllUnprocessedSMSForVerificationTypeSMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="count" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetAMLLimit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="buyPurchaseType" Type="int" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetAMLLimit_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="operationType" Type="int" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="satoshiAmount" Type="bigint" Mode="In" />
+    <Parameter Name="currencyCode" Type="int" Mode="In" />
+    <Parameter Name="currencyPair" Type="int" Mode="In" />
+    <Parameter Name="isAdminPanelInitiated" Type="bit" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetAMLLimit_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="operationType" Type="int" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="satoshiAmount" Type="decimal" Mode="In" />
+    <Parameter Name="currencyCode" Type="int" Mode="In" />
+    <Parameter Name="currencyPair" Type="int" Mode="In" />
+    <Parameter Name="isAdminPanelInitiated" Type="bit" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetAMLLimitForTransactions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="bankPaymentType" Type="int" Mode="In" />
+    <Parameter Name="fiatAmount" Type="decimal" Mode="In" />
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetBankAccountDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BankPaymentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetBankPaymentRequestForAdminPanel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetBatchForSendTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_GetBeneficiaryAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BankPaymentId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetCommitedFromBankPaymnetRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_GetCustomerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BankAccountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetFireBaseObjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_GetIntercomAttributes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetLevelWiseTradeAndTransactionLimits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetLevelWiseTradeAndTransactionLimits_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="currencyPairINT" Type="int" Mode="In" />
+    <Parameter Name="currencyCodeFiatINT" Type="int" Mode="In" />
+    <Parameter Name="currencyCodeVirtualINT" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetOKRMatrix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="USP_GetPendingFromBankPaymnetAndConfirmedFromBankPaymnetRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_GetSmartBankId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetTotalUserBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="isFiat" Type="bit" Mode="In" />
+    <Parameter Name="FiatBaLance" Type="decimal" Mode="InOut" />
+    <Parameter Name="FiatPendingBaLance" Type="decimal" Mode="InOut" />
+    <Parameter Name="BTCBaLance" Type="bigint" Mode="InOut" />
+    <Parameter Name="BTCPendingBaLance" Type="bigint" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetTransactionHistoryForFirebaseSync" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="transactionHistoryId" Type="int" Mode="In" />
+    <Parameter Name="fiatbalance" Type="decimal" Mode="InOut" />
+    <Parameter Name="balance" Type="bigint" Mode="InOut" />
+    <Parameter Name="pendingTradeSatoshiBalance" Type="bigint" Mode="InOut" />
+    <Parameter Name="pendingTradeFiatBalance" Type="decimal" Mode="InOut" />
+    <Parameter Name="transactionHistory" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetTransactionHistoryForSync_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="iLimit" Type="int" Mode="In" />
+    <Parameter Name="currencyCode" Type="varchar" Mode="In" />
+    <Parameter Name="tCount" Type="int" Mode="InOut" />
+    <Parameter Name="balance" Type="bigint" Mode="InOut" />
+  </Function>
+  <Function Name="USP_GetUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="e164Format" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="panNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_GetWithdrawBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_GetWithdrawBatchByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="day" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetWithdrawBatchByProcessor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="processor" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_GetWithdrawBatchForCashfreeRefund" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="day" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_InsertBankPaymentRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="percentage" Type="decimal" Mode="In" />
+    <Parameter Name="netDebitedByZebpay" Type="decimal" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnVal" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_InsertBeneficiaryQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BankpaymentId" Type="int" Mode="In" />
+    <Parameter Name="Sqlresult" Type="int" Mode="InOut" />
+    <Parameter Name="Sqlerrorlog" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_InsertBeneficiaryQueue_v1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BankpaymentId" Type="int" Mode="In" />
+    <Parameter Name="Sqlresult" Type="int" Mode="InOut" />
+    <Parameter Name="Sqlerrorlog" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_InsertFeesSlabs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_InsertIntoRequestResponse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="request" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="depositid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="paymentmethod" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_InsertRequestAccountStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_InsertRequestResponseLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RequestJson" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ResponseJson" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Processor" Type="int" Mode="In" />
+    <Parameter Name="MethodName" Type="nvarchar" Mode="In" />
+    <Parameter Name="WebJobName" Type="nvarchar" Mode="In" />
+    <Parameter Name="BeneId" Type="nvarchar" Mode="In" />
+    <Parameter Name="TransferKey" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_InsertUpdateBeneficiriesAccounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+    <Parameter Name="BeneficiaryQueueId" Type="int" Mode="In" />
+    <Parameter Name="CashfreeResponse" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BankAccountId" Type="int" Mode="In" />
+    <Parameter Name="IsbeneficiaryAdded" Type="bit" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_InsertVerificationRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="verificationType" Type="int" Mode="In" />
+    <Parameter Name="requestType" Type="int" Mode="In" />
+    <Parameter Name="verificationCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="countryISDCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="mobileNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="emailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="scriptSent" Type="nvarchar" Mode="In" />
+    <Parameter Name="attemptCountAllowed" Type="int" Mode="In" />
+    <Parameter Name="sendAttemptAllowed" Type="int" Mode="In" />
+    <Parameter Name="sendAttempt" Type="int" Mode="In" />
+    <Parameter Name="attemptCount" Type="int" Mode="In" />
+    <Parameter Name="expiryDate" Type="datetime" Mode="In" />
+    <Parameter Name="queued" Type="bit" Mode="In" />
+    <Parameter Name="queuedId" Type="int" Mode="In" />
+    <Parameter Name="processed" Type="bit" Mode="In" />
+    <Parameter Name="initiateAt" Type="int" Mode="In" />
+    <Parameter Name="verificationCompleteToken" Type="nvarchar" Mode="In" />
+    <Parameter Name="verificationStatus" Type="int" Mode="In" />
+    <Parameter Name="reason" Type="nvarchar" Mode="In" />
+    <Parameter Name="adminRemarks" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_MatchingBankfeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositId" Type="int" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="comparisonType" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_MatchingBankfeed_BankAccNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositId" Type="int" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_MatchingBankfeed_BankAccNumber_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositId" Type="int" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_MatchingBankfeed_IMPSRefContainsE164format" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositId" Type="int" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_MatchingBankfeed_IMPSRefContainsE164format_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositId" Type="int" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_MatchingBankfeed_SameReferenceNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositId" Type="int" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_MatchingBankfeed_SameReferenceNumber_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositId" Type="int" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_MatchingBankfeed_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositId" Type="int" Mode="In" />
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="comparisonType" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_PopulateUserBalanace" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ProcessBankAccountRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankAccId" Type="int" Mode="In" />
+    <Parameter Name="bankAccRejectReason" Type="varchar" Mode="In" />
+    <Parameter Name="adminCustomerId" Type="int" Mode="In" />
+    <Parameter Name="processType" Type="bit" Mode="In" />
+    <Parameter Name="errorMsg" Type="varchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ProcessBankAccountRequest_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankAccId" Type="int" Mode="In" />
+    <Parameter Name="bankAccRejectReason" Type="varchar" Mode="In" />
+    <Parameter Name="adminCustomerId" Type="int" Mode="In" />
+    <Parameter Name="processType" Type="bit" Mode="In" />
+    <Parameter Name="errorMsg" Type="varchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ProcessBankAccountRequest_V2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankAccId" Type="int" Mode="In" />
+    <Parameter Name="bankAccRejectReason" Type="varchar" Mode="In" />
+    <Parameter Name="adminCustomerId" Type="int" Mode="In" />
+    <Parameter Name="processType" Type="bit" Mode="In" />
+    <Parameter Name="errorMsg" Type="varchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ProcessChangeBankAccountRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="changeBankRequestId" Type="int" Mode="In" />
+    <Parameter Name="bankRequestRemark" Type="nvarchar" Mode="In" />
+    <Parameter Name="adminCustomerId" Type="int" Mode="In" />
+    <Parameter Name="operationType" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ProcessChangeBankAccountRequest_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="changeBankRequestId" Type="int" Mode="In" />
+    <Parameter Name="bankRequestRemark" Type="nvarchar" Mode="In" />
+    <Parameter Name="adminCustomerId" Type="int" Mode="In" />
+    <Parameter Name="operationType" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ProcessKYCRequest_Production" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="userCustomerId" Type="int" Mode="In" />
+    <Parameter Name="adminCustomerId" Type="int" Mode="In" />
+    <Parameter Name="processType" Type="bit" Mode="In" />
+    <Parameter Name="VerificationDocuemntId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="int" Mode="In" />
+    <Parameter Name="BirthDate" Type="datetime" Mode="In" />
+    <Parameter Name="CountryId" Type="int" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+    <Parameter Name="ProfileIdDocumentName" Type="varchar" Mode="In" />
+    <Parameter Name="ProfileIdDocumentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="AddressDocumentName" Type="varchar" Mode="In" />
+    <Parameter Name="AddressDocumentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="AddressDocumentFileHandle" Type="varchar" Mode="In" />
+    <Parameter Name="pancardRejectReason" Type="varchar" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="varchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ProcessKYCRequest_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="userCustomerId" Type="int" Mode="In" />
+    <Parameter Name="adminCustomerId" Type="int" Mode="In" />
+    <Parameter Name="processType" Type="bit" Mode="In" />
+    <Parameter Name="VerificationDocuemntId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="int" Mode="In" />
+    <Parameter Name="BirthDate" Type="datetime" Mode="In" />
+    <Parameter Name="CountryId" Type="int" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+    <Parameter Name="ProfileIdDocumentName" Type="varchar" Mode="In" />
+    <Parameter Name="ProfileIdDocumentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="AddressDocumentName" Type="varchar" Mode="In" />
+    <Parameter Name="AddressDocumentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="AddressDocumentFileHandle" Type="varchar" Mode="In" />
+    <Parameter Name="pancardRejectReason" Type="varchar" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="errorMsg" Type="varchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="USP_RefreshRates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="createdBy" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_RefreshUserBalanace" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ReProcessPayuTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ResetInvoiceNumberSequence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_SendSMSToAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="minAccountId" Type="int" Mode="In" />
+    <Parameter Name="maxAccountId" Type="int" Mode="In" />
+    <Parameter Name="smsText" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_StatementInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_SUPPORT_GetAccountStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mobile" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_testintvp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_UnfreezeBankfeed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankfeedId" Type="int" Mode="In" />
+    <Parameter Name="referenceNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="unfreezeReason" Type="nvarchar" Mode="In" />
+    <Parameter Name="requestedBy" Type="varchar" Mode="In" />
+    <Parameter Name="executionBy" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_UnfreezeBankfeed_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankfeedId" Type="int" Mode="In" />
+    <Parameter Name="referenceNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="unfreezeReason" Type="nvarchar" Mode="In" />
+    <Parameter Name="requestedBy" Type="varchar" Mode="In" />
+    <Parameter Name="executionerId" Type="int" Mode="In" />
+    <Parameter Name="isUnfreezed" Type="bit" Mode="InOut" />
+    <Parameter Name="msg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_Update48HourseData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depositGUID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="status" Type="nvarchar" Mode="In" />
+    <Parameter Name="partnerRefNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_UpdateBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="minAccountId" Type="int" Mode="In" />
+    <Parameter Name="maxAccountId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_UpdateBatchAfterSendAudit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="batchid" Type="bigint" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_UpdateBeneficiaryAccountQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="beneficiaryAccountid" Type="int" Mode="In" />
+    <Parameter Name="IsSuccess" Type="int" Mode="InOut" />
+    <Parameter Name="Sqlerrorlog" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_UpdateBeneficiaryAccountQueue_v1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="beneficiaryAccountid" Type="int" Mode="In" />
+    <Parameter Name="IsSuccess" Type="int" Mode="InOut" />
+    <Parameter Name="Sqlerrorlog" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_updateFirebaseChildNodeinDb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="childNode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_UpdateFirebaseSyncDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_UpdatePayUResponseInBankPaymentRequestTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PartnerTransactionId" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentMode" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="DepositID" Type="nvarchar" Mode="In" />
+    <Parameter Name="BankPaymentReference" Type="nvarchar" Mode="In" />
+    <Parameter Name="ErrorMessage" Type="nvarchar" Mode="In" />
+    <Parameter Name="BankCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="NetDebitedByPartner" Type="decimal" Mode="In" />
+    <Parameter Name="returnVal" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_updateSocketHangup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_updateTxnHistoryinAzure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="isInsert" Type="bit" Mode="In" />
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+    <Parameter Name="ContactGuid" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContactNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContactName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContactType" Type="int" Mode="In" />
+    <Parameter Name="TransactionId" Type="int" Mode="In" />
+    <Parameter Name="TransactionGUID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Transaction_Type" Type="int" Mode="In" />
+    <Parameter Name="Transaction_Status" Type="int" Mode="In" />
+    <Parameter Name="PaymentType" Type="int" Mode="In" />
+    <Parameter Name="PaymentTypeId" Type="int" Mode="In" />
+    <Parameter Name="MagicMomentMesageId" Type="int" Mode="In" />
+    <Parameter Name="CrDb" Type="int" Mode="In" />
+    <Parameter Name="AmountInSatoshi" Type="bigint" Mode="In" />
+    <Parameter Name="ActualAmount" Type="bigint" Mode="In" />
+    <Parameter Name="Fees" Type="int" Mode="In" />
+    <Parameter Name="AmountWithoutFees" Type="bigint" Mode="In" />
+    <Parameter Name="USDRate" Type="decimal" Mode="In" />
+    <Parameter Name="USDAmount" Type="decimal" Mode="In" />
+    <Parameter Name="USDToNativeRate" Type="decimal" Mode="In" />
+    <Parameter Name="NativeCurrencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="NativeCurrencyAmount" Type="decimal" Mode="In" />
+    <Parameter Name="Read" Type="bit" Mode="In" />
+    <Parameter Name="receiverReadStatus" Type="int" Mode="In" />
+    <Parameter Name="TransactionTime" Type="datetime" Mode="In" />
+    <Parameter Name="Notes" Type="nvarchar" Mode="In" />
+    <Parameter Name="EncodeNote" Type="bit" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="txid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_updateTxntableTimestamps" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_UpdateUserBalanceOfRecentTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lastXMinutes" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_UpdateVerificationSMSTrackingStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="smsTrackingId" Type="int" Mode="In" />
+    <Parameter Name="gatewayResponse" Type="nvarchar" Mode="In" />
+    <Parameter Name="messageId" Type="nvarchar" Mode="In" />
+    <Parameter Name="processed" Type="int" Mode="In" />
+    <Parameter Name="smsGatewayId" Type="int" Mode="In" />
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_UpdateWithdrawBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_UpdateWithdrawBatchTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TransactionKey" Type="nvarchar" Mode="In" />
+    <Parameter Name="TransferResponse" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Refrencekey" Type="nvarchar" Mode="In" />
+    <Parameter Name="UTR" Type="nvarchar" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="CashfreeResponseStatus" Type="int" Mode="In" />
+    <Parameter Name="result" Type="int" Mode="InOut" />
+    <Parameter Name="WebjobName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_VA_AutoRefund" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_VA_AutoRefund_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bankpaymentid" Type="int" Mode="In" />
+    <Parameter Name="refundstatus" Type="int" Mode="In" />
+    <Parameter Name="refundid" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_CancelPendingTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_VA_DirectPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vaid" Type="int" Mode="In" />
+    <Parameter Name="payerVirtualAaccountId" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerbankaccountid" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerbankaccountEntity" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerbankaccountIFSC" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerbankaccountName" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerAccountNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerAmount" Type="decimal" Mode="In" />
+    <Parameter Name="isbankpaymentnull" Type="int" Mode="In" />
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+    <Parameter Name="errormsg" Type="nvarchar(max)" Mode="InOut" />
+    <Parameter Name="bankpaymentid" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_DirectPaymentCashfree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vaid" Type="int" Mode="In" />
+    <Parameter Name="payerVirtualAaccountId" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerbankaccountid" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerbankaccountEntity" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerbankaccountIFSC" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerbankaccountName" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerAccountNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="payerAmount" Type="decimal" Mode="In" />
+    <Parameter Name="isbankpaymentnull" Type="int" Mode="In" />
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+    <Parameter Name="errormsg" Type="nvarchar(max)" Mode="InOut" />
+    <Parameter Name="bankpaymentid" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_GetBankPaymentRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_VA_GetCustomersForVirtualAccountCreation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_VA_GetCustomersFromVirtualAccountQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RazorPayStatus" Type="int" Mode="In" />
+    <Parameter Name="GoCashFreeStatus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_VA_GetVirtualAccountFromTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+    <Parameter Name="MobileNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VirtualAccountType" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_InsertBankPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="paymentStatus" Type="int" Mode="In" />
+    <Parameter Name="bankPaymentRequestid" Type="int" Mode="In" />
+    <Parameter Name="RefundableState" Type="int" Mode="In" />
+    <Parameter Name="reason" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="bankpaymentid" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_InsertBankPaymentRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="paymentStatus" Type="int" Mode="In" />
+    <Parameter Name="currencyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="partnerRefNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="partnerTransactionId" Type="nvarchar" Mode="In" />
+    <Parameter Name="paymentMode" Type="nvarchar" Mode="In" />
+    <Parameter Name="fees" Type="decimal" Mode="In" />
+    <Parameter Name="NetDebitedAmountByPartner" Type="decimal" Mode="In" />
+    <Parameter Name="NetDebitedAmountByZebpay" Type="decimal" Mode="In" />
+    <Parameter Name="errorMessage" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnValue" Type="int" Mode="InOut" />
+    <Parameter Name="IspartnerLimitExceed" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_InsertIntoVirtualAccountAndUpdateQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VirtualAccountId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Entity" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Notes" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AmountPaid" Type="decimal" Mode="In" />
+    <Parameter Name="CustomerId" Type="nvarchar" Mode="In" />
+    <Parameter Name="RemitterAccount" Type="nvarchar" Mode="In" />
+    <Parameter Name="RemitterIfsc" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverId" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverEntity" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ReceiverIfsc" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverAccountNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="VirtualAccountStatus" Type="int" Mode="In" />
+    <Parameter Name="CreatedAt" Type="nvarchar" Mode="In" />
+    <Parameter Name="VirtualAccountType" Type="int" Mode="In" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="IsSuccess" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_InsertVirtualAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="customer_id" Type="nvarchar" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="virtualaccounttype" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_InsertWebhookResponse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+    <Parameter Name="errormsg" Type="nvarchar(max)" Mode="InOut" />
+    <Parameter Name="bankpaymentid" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_UpdateCustomerInVirtualAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerId" Type="nvarchar" Mode="In" />
+    <Parameter Name="MobileNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccountId" Type="int" Mode="In" />
+    <Parameter Name="VirtualAccountType" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_UpdateVirtualAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="virtualaccountid" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="entity" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="amount_paid" Type="decimal" Mode="In" />
+    <Parameter Name="customer_id" Type="nvarchar" Mode="In" />
+    <Parameter Name="receiver_id" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverEntity" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ReceiverIfsc" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverAccountNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="virtualaccountstatus" Type="int" Mode="In" />
+    <Parameter Name="created_at" Type="nvarchar" Mode="In" />
+    <Parameter Name="virtualaccounttype" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_UpdateVirtualAccountQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mobileNo" Type="varchar" Mode="In" />
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="virtualaccounttype" Type="int" Mode="In" />
+    <Parameter Name="razorPayStatus" Type="int" Mode="In" />
+    <Parameter Name="errorMsg" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="isSuccess" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VA_UpdateVirtualAccountQueueForError" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MobileNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_validateBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="batchid" Type="bigint" Mode="In" />
+    <Parameter Name="amount" Type="bigint" Mode="In" />
+    <Parameter Name="address" Type="varchar(max)" Mode="In" />
+    <Parameter Name="dbid" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="USP_ValidateBccAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="address" Type="nvarchar" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="errormessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ValidatePartnerLimit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnVal" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_ValidatePartnerLimit_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="partnerid" Type="int" Mode="In" />
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="In" />
+    <Parameter Name="errorCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnVal" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VerifyUserBasedOnAccountId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+    <Parameter Name="returnVal" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="USP_VerifyUserBasedOnAccountId_V1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="errorcode" Type="int" Mode="InOut" />
+    <Parameter Name="returnVal" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="VerifyAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="accountId" Type="int" Mode="In" />
+    <Parameter Name="picId" Type="int" Mode="In" />
+    <Parameter Name="verifiedProfileName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="gender" Type="int" Mode="In" />
+    <Parameter Name="birthDate" Type="datetime" Mode="In" />
+    <Parameter Name="countryId" Type="int" Mode="In" />
+    <Parameter Name="mobileNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="verifiedProfileEmail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IdDocumentName" Type="int" Mode="In" />
+    <Parameter Name="idDocumentNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="addressDocumentName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="addressDocumentNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="addressDocumentFileHandle" Type="varchar(max)" Mode="In" />
+    <Parameter Name="StatusModifyBy" Type="varchar(max)" Mode="In" />
+    <Parameter Name="verificationStatusNote" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ZebpayIndiaAccountId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="ZebpayRefundAccountId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <EntityContainer Name="zebpayTestnetDbModelStoreContainer">
+    <EntitySet Name="ZebPay_Account" EntityType="Self.ZebPay_Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZebPay_Account_Banks" EntityType="Self.ZebPay_Account_Banks" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

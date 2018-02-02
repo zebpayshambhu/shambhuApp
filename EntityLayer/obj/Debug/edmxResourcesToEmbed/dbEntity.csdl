@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="zebpayTestnetDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="CalculateTradeFees_Result">
+    <Property Name="tTakerFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tMakerFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tTakerFiatRateWithFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tMakerFiatRateWithFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tTakerFiatAmountWithoutFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tMakerFiatAmountWithoutFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tTakerFiatAmountWithFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tMakerFiatAmountWithFees" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tTakerVirtualAmountWithoutFees" Type="Decimal" Precision="20" Scale="18" />
+    <Property Name="tMakerVirtualAmountWithoutFees" Type="Decimal" Precision="20" Scale="18" />
+    <Property Name="tTakerVirtualAmountWithFees" Type="Decimal" Precision="20" Scale="18" />
+    <Property Name="tMakerVirtualAmountWithFees" Type="Decimal" Precision="20" Scale="18" />
+  </ComplexType>
+  <ComplexType Name="ComputeRate_Result">
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NativeCurrency" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BtcUsdRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UsdtoNativeCurrencyRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BtctoNativeCurrencyRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BuyRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SellRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BtcUsdRateProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OriginalUsdtoNativeCurrencyRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OriginalUsdtoNativeRateProvideName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZebpayINRProfitPercentage" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="ZebpayBuyPercentage" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="ZebpaySellPercentage" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="BuyLowerLimit" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SellUpperLimit" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PriceChangeINR" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="RandomPriceChangeINR" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PublicGUID" Type="Guid" Nullable="false" />
+    <Property Name="PrivateGUID" Type="Guid" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetAccountStatementWihtCrdbInINR_Result">
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="41" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NetAmount" Type="Decimal" Precision="20" Scale="2" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetAccountStatementWihtCrdbInINR_V1_Result">
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="41" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NetAmount" Type="Decimal" Precision="20" Scale="2" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="bankpaymenttype" Type="Int32" Nullable="false" />
+    <Property Name="BankPaymentProcessStatus" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetAccountStatementWihtCrdbInINR_V2_Result">
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="1031" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NetAmount" Type="Decimal" Precision="20" Scale="2" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="bankpaymenttype" Type="Int32" Nullable="false" />
+    <Property Name="BankPaymentProcessStatus" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetAllBalances_Result">
+    <Property Name="SatoshiBalance" Type="Int64" />
+    <Property Name="FiatBalance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PendingSatoshiBalance" Type="Int64" />
+    <Property Name="PendingFiatBalance" Type="Decimal" Precision="18" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="GetKYCDetail_Result">
+    <Property Name="TotalNewKYC" Type="Int32" Nullable="false" />
+    <Property Name="AutoVerifyKYC" Type="Int32" Nullable="false" />
+    <Property Name="ManuallyVerifyKYC" Type="Int32" Nullable="false" />
+    <Property Name="ManuallyRejectKYC" Type="Int32" Nullable="false" />
+    <Property Name="PendingKYC" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetListOfTotalCancelDepositeOrderByReason_Result">
+    <Property Name="ReasonType" Type="Int32" />
+    <Property Name="TotalCancelPerReason" Type="Int32" />
+    <Property Name="TotalCancelAmountPerReason" Type="Decimal" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="GetNegativeBalanceAccountIds_Result">
+    <Property Name="AccountId" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetZebpayInternalAccountID_Result">
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="nop_splitstring_to_table_Result">
+    <Property Name="data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="UDF_SplitString_Result">
+    <Property Name="Item" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="udfFiatAmountGetValues_Result">
+    <Property Name="SatoshiAmount" Type="Int64" />
+    <Property Name="BTCAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NativeCurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="BTCUsdRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="USDAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NativeCurrencyToUSDRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NativeCurrencyAmount" Type="Decimal" Precision="18" Scale="2" />
+  </ComplexType>
+  <EntityContainer Name="zebpayTestnetDbEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="CalculateTradeFees" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.CalculateTradeFees_Result)">
+      <Parameter Name="pmakerId" Mode="In" Type="Int32" />
+      <Parameter Name="ptakerId" Mode="In" Type="Int32" />
+      <Parameter Name="prate" Mode="In" Type="Decimal" />
+      <Parameter Name="fiatAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="virtualAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="ptype" Mode="In" Type="Int32" />
+      <Parameter Name="pmakerType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ComputeRate" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.ComputeRate_Result)">
+      <Parameter Name="fiatCurrencyCode" Mode="In" Type="String" />
+      <Parameter Name="zebpayINRProfitPercentage" Mode="In" Type="Decimal" />
+      <Parameter Name="zebpayBuyPercentage" Mode="In" Type="Decimal" />
+      <Parameter Name="zebpaySellPercentage" Mode="In" Type="Decimal" />
+      <Parameter Name="buyLowerLimit" Mode="In" Type="Decimal" />
+      <Parameter Name="sellLowerLimit" Mode="In" Type="Decimal" />
+      <Parameter Name="buyUpperLimit" Mode="In" Type="Decimal" />
+      <Parameter Name="sellUpperLimit" Mode="In" Type="Decimal" />
+      <Parameter Name="priceChangeINR" Mode="In" Type="Decimal" />
+      <Parameter Name="randomPriceChangeINR" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="GetAccountStatementWihtCrdbInINR" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.GetAccountStatementWihtCrdbInINR_Result)">
+      <Parameter Name="useraccountid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAccountStatementWihtCrdbInINR_V1" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.GetAccountStatementWihtCrdbInINR_V1_Result)">
+      <Parameter Name="useraccountid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAccountStatementWihtCrdbInINR_V2" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.GetAccountStatementWihtCrdbInINR_V2_Result)">
+      <Parameter Name="useraccountid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllBalances" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.GetAllBalances_Result)">
+      <Parameter Name="accountId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetKYCDetail" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.GetKYCDetail_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="GetListOfTotalCancelDepositeOrderByReason" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.GetListOfTotalCancelDepositeOrderByReason_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="GetNegativeBalanceAccountIds" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.GetNegativeBalanceAccountIds_Result)" />
+    <FunctionImport Name="GetZebpayInternalAccountID" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.GetZebpayInternalAccountID_Result)" />
+    <FunctionImport Name="nop_splitstring_to_table" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.nop_splitstring_to_table_Result)">
+      <Parameter Name="string" Mode="In" Type="String" />
+      <Parameter Name="delimiter" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UDF_SplitString" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.UDF_SplitString_Result)">
+      <Parameter Name="Input" Mode="In" Type="String" />
+      <Parameter Name="Character" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="udfFiatAmountGetValues" IsComposable="true" ReturnType="Collection(zebpayTestnetDbModel.udfFiatAmountGetValues_Result)">
+      <Parameter Name="satoshi" Mode="In" Type="Int64" />
+      <Parameter Name="currencyCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tblAccounts" EntityType="zebpayTestnetDbModel.tblAccount" />
+    <EntitySet Name="tblAccount_Banks" EntityType="zebpayTestnetDbModel.tblAccount_Banks" />
+  </EntityContainer>
+  <EntityType Name="tblAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="AccountType" Nullable="false" Type="Int32" />
+    <Property Name="Processed" Nullable="false" Type="Boolean" />
+    <Property Name="CreateDate" Nullable="false" Precision="3" Type="DateTime" />
+    <Property Name="ModifyDate" Nullable="false" Precision="3" Type="DateTime" />
+    <Property Name="CreatedBy" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Status" Nullable="false" Type="Int32" />
+    <Property Name="ParseId" MaxLength="1000" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="PinSetup" Type="Int32" />
+    <Property Name="FileAccessHandle" Type="Guid" />
+    <Property Name="LastActive" Precision="3" Type="DateTime" />
+    <Property Name="ProfilePicId" Type="Int32" />
+    <Property Name="CurrencyCode" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="VerificationLevel" Nullable="false" Type="Int32" />
+    <Property Name="VerificationDocuemntId" Nullable="false" Type="Int32" />
+    <Property Name="VerificationStatusNote" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="VerificationStatus" Nullable="false" Type="Int32" />
+    <Property Name="DebitEnabled" Nullable="false" Type="Boolean" />
+    <Property Name="FiatBalance" Nullable="false" Precision="18" Scale="4" Type="Decimal" />
+    <Property Name="SendingLimits" Nullable="false" Precision="18" Scale="4" Type="Decimal" />
+    <Property Name="DebitDisableReason" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="SubmissionDate" Precision="3" Type="DateTime" />
+    <Property Name="ReferralCode" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="RefereeAccountId" Type="Int32" />
+    <Property Name="StatusModifyBy" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+  </EntityType>
+  <EntityType Name="tblAccount_Banks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankName" Type="String" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

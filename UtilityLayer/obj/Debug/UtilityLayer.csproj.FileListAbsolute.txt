@@ -1,0 +1,6 @@
+F:\Project\Sample Project\GitHubTest\AbstractFactory\UtilityLayer\bin\Debug\UtilityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\UtilityLayer\bin\Debug\UtilityLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\UtilityLayer\obj\Debug\UtilityLayer.csprojResolveAssemblyReference.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\UtilityLayer\obj\Debug\UtilityLayer.csproj.CoreCompileInputs.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\UtilityLayer\obj\Debug\UtilityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\UtilityLayer\obj\Debug\UtilityLayer.pdb

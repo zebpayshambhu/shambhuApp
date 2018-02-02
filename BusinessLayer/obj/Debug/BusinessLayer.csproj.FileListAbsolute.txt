@@ -1,0 +1,15 @@
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\BusinessLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\BusinessLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\DataLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\EntityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\UtilityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\EntityFramework.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\DataLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\EntityLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\EntityLayer.dll.config
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\UtilityLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\bin\Debug\EntityFramework.xml
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\obj\Debug\BusinessLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\BusinessLayer\obj\Debug\BusinessLayer.pdb

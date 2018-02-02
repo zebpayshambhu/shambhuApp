@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="zebpayTestnetDbModelStoreContainer" CdmEntityContainer="zebpayTestnetDbEntities">
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.CalculateTradeFees" FunctionImportName="CalculateTradeFees">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.CalculateTradeFees_Result">
+          <ScalarProperty Name="tTakerFees" ColumnName="tTakerFees" />
+          <ScalarProperty Name="tMakerFees" ColumnName="tMakerFees" />
+          <ScalarProperty Name="tTakerFiatRateWithFees" ColumnName="tTakerFiatRateWithFees" />
+          <ScalarProperty Name="tMakerFiatRateWithFees" ColumnName="tMakerFiatRateWithFees" />
+          <ScalarProperty Name="tTakerFiatAmountWithoutFees" ColumnName="tTakerFiatAmountWithoutFees" />
+          <ScalarProperty Name="tMakerFiatAmountWithoutFees" ColumnName="tMakerFiatAmountWithoutFees" />
+          <ScalarProperty Name="tTakerFiatAmountWithFees" ColumnName="tTakerFiatAmountWithFees" />
+          <ScalarProperty Name="tMakerFiatAmountWithFees" ColumnName="tMakerFiatAmountWithFees" />
+          <ScalarProperty Name="tTakerVirtualAmountWithoutFees" ColumnName="tTakerVirtualAmountWithoutFees" />
+          <ScalarProperty Name="tMakerVirtualAmountWithoutFees" ColumnName="tMakerVirtualAmountWithoutFees" />
+          <ScalarProperty Name="tTakerVirtualAmountWithFees" ColumnName="tTakerVirtualAmountWithFees" />
+          <ScalarProperty Name="tMakerVirtualAmountWithFees" ColumnName="tMakerVirtualAmountWithFees" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.ComputeRate" FunctionImportName="ComputeRate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.ComputeRate_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NativeCurrency" ColumnName="NativeCurrency" />
+          <ScalarProperty Name="BtcUsdRate" ColumnName="BtcUsdRate" />
+          <ScalarProperty Name="UsdtoNativeCurrencyRate" ColumnName="UsdtoNativeCurrencyRate" />
+          <ScalarProperty Name="BtctoNativeCurrencyRate" ColumnName="BtctoNativeCurrencyRate" />
+          <ScalarProperty Name="BuyRate" ColumnName="BuyRate" />
+          <ScalarProperty Name="SellRate" ColumnName="SellRate" />
+          <ScalarProperty Name="BtcUsdRateProviderName" ColumnName="BtcUsdRateProviderName" />
+          <ScalarProperty Name="OriginalUsdtoNativeCurrencyRate" ColumnName="OriginalUsdtoNativeCurrencyRate" />
+          <ScalarProperty Name="OriginalUsdtoNativeRateProvideName" ColumnName="OriginalUsdtoNativeRateProvideName" />
+          <ScalarProperty Name="ZebpayINRProfitPercentage" ColumnName="ZebpayINRProfitPercentage" />
+          <ScalarProperty Name="ZebpayBuyPercentage" ColumnName="ZebpayBuyPercentage" />
+          <ScalarProperty Name="ZebpaySellPercentage" ColumnName="ZebpaySellPercentage" />
+          <ScalarProperty Name="BuyLowerLimit" ColumnName="BuyLowerLimit" />
+          <ScalarProperty Name="SellUpperLimit" ColumnName="SellUpperLimit" />
+          <ScalarProperty Name="PriceChangeINR" ColumnName="PriceChangeINR" />
+          <ScalarProperty Name="RandomPriceChangeINR" ColumnName="RandomPriceChangeINR" />
+          <ScalarProperty Name="PublicGUID" ColumnName="PublicGUID" />
+          <ScalarProperty Name="PrivateGUID" ColumnName="PrivateGUID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.GetAccountStatementWihtCrdbInINR" FunctionImportName="GetAccountStatementWihtCrdbInINR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.GetAccountStatementWihtCrdbInINR_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.GetAccountStatementWihtCrdbInINR_V1" FunctionImportName="GetAccountStatementWihtCrdbInINR_V1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.GetAccountStatementWihtCrdbInINR_V1_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="bankpaymenttype" ColumnName="bankpaymenttype" />
+          <ScalarProperty Name="BankPaymentProcessStatus" ColumnName="BankPaymentProcessStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.GetAccountStatementWihtCrdbInINR_V2" FunctionImportName="GetAccountStatementWihtCrdbInINR_V2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.GetAccountStatementWihtCrdbInINR_V2_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="bankpaymenttype" ColumnName="bankpaymenttype" />
+          <ScalarProperty Name="BankPaymentProcessStatus" ColumnName="BankPaymentProcessStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.GetAllBalances" FunctionImportName="GetAllBalances">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.GetAllBalances_Result">
+          <ScalarProperty Name="SatoshiBalance" ColumnName="SatoshiBalance" />
+          <ScalarProperty Name="FiatBalance" ColumnName="FiatBalance" />
+          <ScalarProperty Name="PendingSatoshiBalance" ColumnName="PendingSatoshiBalance" />
+          <ScalarProperty Name="PendingFiatBalance" ColumnName="PendingFiatBalance" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.GetKYCDetail" FunctionImportName="GetKYCDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.GetKYCDetail_Result">
+          <ScalarProperty Name="TotalNewKYC" ColumnName="TotalNewKYC" />
+          <ScalarProperty Name="AutoVerifyKYC" ColumnName="AutoVerifyKYC" />
+          <ScalarProperty Name="ManuallyVerifyKYC" ColumnName="ManuallyVerifyKYC" />
+          <ScalarProperty Name="ManuallyRejectKYC" ColumnName="ManuallyRejectKYC" />
+          <ScalarProperty Name="PendingKYC" ColumnName="PendingKYC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.GetListOfTotalCancelDepositeOrderByReason" FunctionImportName="GetListOfTotalCancelDepositeOrderByReason">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.GetListOfTotalCancelDepositeOrderByReason_Result">
+          <ScalarProperty Name="ReasonType" ColumnName="ReasonType" />
+          <ScalarProperty Name="TotalCancelPerReason" ColumnName="TotalCancelPerReason" />
+          <ScalarProperty Name="TotalCancelAmountPerReason" ColumnName="TotalCancelAmountPerReason" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.GetNegativeBalanceAccountIds" FunctionImportName="GetNegativeBalanceAccountIds">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.GetNegativeBalanceAccountIds_Result">
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.GetZebpayInternalAccountID" FunctionImportName="GetZebpayInternalAccountID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.GetZebpayInternalAccountID_Result">
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.nop_splitstring_to_table" FunctionImportName="nop_splitstring_to_table">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.nop_splitstring_to_table_Result">
+          <ScalarProperty Name="data" ColumnName="data" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.UDF_SplitString" FunctionImportName="UDF_SplitString">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.UDF_SplitString_Result">
+          <ScalarProperty Name="Item" ColumnName="Item" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="zebpayTestnetDbModel.Store.udfFiatAmountGetValues" FunctionImportName="udfFiatAmountGetValues">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="zebpayTestnetDbModel.udfFiatAmountGetValues_Result">
+          <ScalarProperty Name="SatoshiAmount" ColumnName="SatoshiAmount" />
+          <ScalarProperty Name="BTCAmount" ColumnName="BTCAmount" />
+          <ScalarProperty Name="NativeCurrencyCode" ColumnName="NativeCurrencyCode" />
+          <ScalarProperty Name="BTCUsdRate" ColumnName="BTCUsdRate" />
+          <ScalarProperty Name="USDAmount" ColumnName="USDAmount" />
+          <ScalarProperty Name="NativeCurrencyToUSDRate" ColumnName="NativeCurrencyToUSDRate" />
+          <ScalarProperty Name="NativeCurrencyAmount" ColumnName="NativeCurrencyAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tblAccounts">
+      <EntityTypeMapping TypeName="zebpayTestnetDbModel.tblAccount">
+        <MappingFragment StoreEntitySet="ZebPay_Account">
+          <ScalarProperty Name="StatusModifyBy" ColumnName="StatusModifyBy" />
+          <ScalarProperty Name="RefereeAccountId" ColumnName="RefereeAccountId" />
+          <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+          <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
+          <ScalarProperty Name="DebitDisableReason" ColumnName="DebitDisableReason" />
+          <ScalarProperty Name="SendingLimits" ColumnName="SendingLimits" />
+          <ScalarProperty Name="FiatBalance" ColumnName="FiatBalance" />
+          <ScalarProperty Name="DebitEnabled" ColumnName="DebitEnabled" />
+          <ScalarProperty Name="VerificationStatus" ColumnName="VerificationStatus" />
+          <ScalarProperty Name="VerificationStatusNote" ColumnName="VerificationStatusNote" />
+          <ScalarProperty Name="VerificationDocuemntId" ColumnName="VerificationDocuemntId" />
+          <ScalarProperty Name="VerificationLevel" ColumnName="VerificationLevel" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="ProfilePicId" ColumnName="ProfilePicId" />
+          <ScalarProperty Name="LastActive" ColumnName="LastActive" />
+          <ScalarProperty Name="FileAccessHandle" ColumnName="FileAccessHandle" />
+          <ScalarProperty Name="PinSetup" ColumnName="PinSetup" />
+          <ScalarProperty Name="ParseId" ColumnName="ParseId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAccount_Banks">
+      <EntityTypeMapping TypeName="zebpayTestnetDbModel.tblAccount_Banks">
+        <MappingFragment StoreEntitySet="ZebPay_Account_Banks">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

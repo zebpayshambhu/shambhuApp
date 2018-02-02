@@ -1,0 +1,11 @@
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\bin\Debug\EntityLayer.dll.config
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\bin\Debug\EntityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\bin\Debug\EntityLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\bin\Debug\EntityFramework.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\bin\Debug\EntityFramework.SqlServer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\bin\Debug\EntityFramework.xml
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\bin\Debug\EntityFramework.SqlServer.xml
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\obj\Debug\EntityLayer.csprojResolveAssemblyReference.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\obj\Debug\EntityLayer.csproj.CoreCompileInputs.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\obj\Debug\EntityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\EntityLayer\obj\Debug\EntityLayer.pdb

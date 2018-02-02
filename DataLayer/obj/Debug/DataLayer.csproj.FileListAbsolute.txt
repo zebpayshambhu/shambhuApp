@@ -1,0 +1,15 @@
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\DataLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\DataLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\EntityFramework.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\EntityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\UtilityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\EntityLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\EntityLayer.dll.config
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\UtilityLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\EntityFramework.xml
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\obj\Debug\DataLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\DataLayer\obj\Debug\DataLayer.pdb

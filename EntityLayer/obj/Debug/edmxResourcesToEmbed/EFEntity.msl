@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="DbEntities">
+    <EntitySetMapping Name="tblAccounts">
+      <EntityTypeMapping TypeName="DbModel.tblAccount">
+        <MappingFragment StoreEntitySet="tblAccount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="NotificationHandle" ColumnName="NotificationHandle" />
+          <ScalarProperty Name="PinSetup" ColumnName="PinSetup" />
+          <ScalarProperty Name="FileAccessHandle" ColumnName="FileAccessHandle" />
+          <ScalarProperty Name="LastActive" ColumnName="LastActive" />
+          <ScalarProperty Name="ProfilePicChangeDate" ColumnName="ProfilePicChangeDate" />
+          <ScalarProperty Name="ProfilePicHandle" ColumnName="ProfilePicHandle" />
+          <ScalarProperty Name="ProfilePicId" ColumnName="ProfilePicId" />
+          <ScalarProperty Name="NotificationPlatform" ColumnName="NotificationPlatform" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="VerificationLevel" ColumnName="VerificationLevel" />
+          <ScalarProperty Name="VerificationStatusNote" ColumnName="VerificationStatusNote" />
+          <ScalarProperty Name="VerificationStatus" ColumnName="VerificationStatus" />
+          <ScalarProperty Name="DebitEnabled" ColumnName="DebitEnabled" />
+          <ScalarProperty Name="FiatBalance" ColumnName="FiatBalance" />
+          <ScalarProperty Name="EliteDiscountPercentage" ColumnName="EliteDiscountPercentage" />
+          <ScalarProperty Name="SendingLimits" ColumnName="SendingLimits" />
+          <ScalarProperty Name="DebitDisableReason" ColumnName="DebitDisableReason" />
+          <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
+          <ScalarProperty Name="StatusChnageDate" ColumnName="StatusChnageDate" />
+          <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+          <ScalarProperty Name="RefereeCode" ColumnName="RefereeCode" />
+          <ScalarProperty Name="StatusModifyBy" ColumnName="StatusModifyBy" />
+          <ScalarProperty Name="ProfilePicFirebaseName" ColumnName="ProfilePicFirebaseName" />
+          <ScalarProperty Name="RefereeCodeDate" ColumnName="RefereeCodeDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAccount_Banks">
+      <EntityTypeMapping TypeName="DbModel.tblAccount_Banks">
+        <MappingFragment StoreEntitySet="tblAccount_Banks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
