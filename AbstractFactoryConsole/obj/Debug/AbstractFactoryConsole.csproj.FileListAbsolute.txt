@@ -210,3 +210,14 @@ F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\
 F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\AbstractFactory.pdb
 F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\obj\Debug\AbstractFactoryConsole.exe
 F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\obj\Debug\AbstractFactoryConsole.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\BusinessLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\EntityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\DataLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\UtilityLayer.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\EntityFramework.dll
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\BusinessLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\EntityLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\EntityLayer.dll.config
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\DataLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\UtilityLayer.pdb
+F:\Project\Sample Project\GitHubTest\AbstractFactory\AbstractFactoryConsole\bin\Debug\EntityFramework.xml

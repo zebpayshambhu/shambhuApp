@@ -53,6 +53,10 @@
       <Project>{088b105f-b3d5-41e5-9f60-07f5b47ef1b7}</Project>
       <Name>AbstractFactory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{730ef325-e400-42b7-8511-bb6ec39c8ce1}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

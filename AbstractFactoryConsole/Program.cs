@@ -1,5 +1,6 @@
 ﻿using AbstractFactory.Factory;
 using AbstractFactory.Interface;
+using BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace AbstractFactoryConsole
     static class Program
     {
         static void Main(string[] args)
+        {
+            AccountBL obj = new AccountBL();
+        }
+
+        private static void InterfaceMethod()
         {
             IBookStore bookStoreA = new BookStoreA(CustomerLocation.EastCoast);
             ShipBook(bookStoreA);

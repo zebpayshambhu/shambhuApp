@@ -14,6 +14,8 @@ namespace BusinessLayer
 {
     public class AccountBL : IAccount
     {
+
+
         private readonly UnitOfWork _UnitOfWork;
         private readonly DbHelper<tblAccount> _repository;
         public AccountBL()

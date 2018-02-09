@@ -65,6 +65,7 @@
       <DependentUpon>EFEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tblAccount.cs">
       <DependentUpon>EFEntity.tt</DependentUpon>
